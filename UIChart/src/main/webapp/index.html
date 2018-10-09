@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>UI Chart</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    </head>
+    <body>
+        <div style="align-content: center;text-align: center;">REST Framework time taken for 1000 requests</div>
+        <canvas id="ui-chart"></canvas>
+        <script>
+            var url = 'http://localhost:27643/UIRESTService/rest/all';
+            fetch(url)
+                    .then(data => {
+                        return data.json();
+                    })
+                    .then(res => {
+                        var data = JSON.parse(res.result);
+                        var size = data.length;
+                        var chartDataa = [];
+                        var chartDatab = [];
+                        var chartDatac = [];
+                        var a = 0, b = 0, c = 0;
+                        for (i = 0; i < size; i++) {
+                            var val = Number(data[i]['avg-diff-time'] / 1000).toFixed();
+                            if ('OKHttp' === data[i]['client-service-provider']) {
+                                chartDataa[a] = val;
+                                a++;
+                            } else if ('Jersey Client' === data[i]['client-service-provider']) {
+                                chartDatab[b] = val;
+                                b++;
+                            } else if ('UniTest' === data[i]['client-service-provider']) {
+                                chartDatac[c] = val;
+                                c++;
+                            }
+                        }
+                        updateData(chart, 0, chartDataa);
+                        updateData(chart, 1, chartDatab);
+                        updateData(chart, 2, chartDatac);
+                    });
+            var ctx = document.getElementById('ui-chart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+
+                // The data for our dataset
+                data: {
+                    labels: ["Spark Java(Standalone)", "Javalin(Standalone)", "Spring Boot 2.0(Standalone)", "Jersey(dep. in Payara 5)","Jersey(dep. in Tomcat)", "Resteasy(dep. in Wildfly 14)"],
+                    datasets: [{
+                            label: "OKHTTP Client",
+                            backgroundColor: 'rgb(255, 99, 0)',
+                            borderColor: 'rgb(0, 0, 0)',
+                            data: []
+                        }, {
+                            label: "Jersey Client",
+                            backgroundColor: 'rgb(155, 99, 0)',
+                            borderColor: 'rgb(0, 0, 0)',
+                            data: []
+                        }, {
+                            label: "Unirest Client",
+                            backgroundColor: 'rgb(55, 99, 0)',
+                            borderColor: 'rgb(0, 0, 0)',
+                            data: []
+                        }]
+                },
+
+                // Configuration options go here
+                options: {
+                    hover: {
+                        animationDuration: 0
+                    },
+                    animation: {
+                        duration: 1,
+                        onComplete: function () {
+                            var chartInstance = this.chart,
+                                    ctx = chartInstance.ctx;
+
+                            ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize,
+                                    Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'bottom';
+
+                            this.data.datasets.forEach(function (dataset, i) {
+                                var meta = chartInstance.controller.getDatasetMeta(i);
+                                meta.data.forEach(function (bar, index) {
+                                    var data = dataset.data[index];
+                                    ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                                });
+                            });
+                        }
+                    }
+                }
+            });
+
+            function updateData(chart, index, data) {
+                chart.data.datasets[index].data = data;
+                chart.update();
+            }
+        </script>
+    </body>
+</html>

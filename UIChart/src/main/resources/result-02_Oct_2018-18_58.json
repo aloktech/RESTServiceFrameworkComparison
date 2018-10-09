@@ -1,0 +1,147 @@
+{
+    "results": [{
+            "server": "Jetty Server",
+            "start-time": 127126151031266,
+            "diff-time": 3167948457,
+            "client-service-provider": "OKHttp",
+            "end-time": 127129319003930,
+            "iteration": 1000,
+            "server-service-provider": "Spark",
+            "avg-diff-time": 3.1675954649999998
+        }, {
+            "server": "Jetty Server",
+            "start-time": 127129322187401,
+            "diff-time": 2457124917,
+            "client-service-provider": "OKHttp",
+            "end-time": 127131779314852,
+            "iteration": 1000,
+            "server-service-provider": "Javalin",
+            "avg-diff-time": 2.4566104920000003
+        }, {
+            "server": "Jetty Server",
+            "start-time": 127131780156724,
+            "diff-time": 117346059,
+            "client-service-provider": "OKHttp",
+            "end-time": 127131897505516,
+            "iteration": 1000,
+            "server-service-provider": "Spring Boot",
+            "avg-diff-time": 0.117109822
+        }, {
+            "server": "Payara Server 5",
+            "start-time": 127131898425577,
+            "diff-time": 161040793,
+            "client-service-provider": "OKHttp",
+            "end-time": 127132059470176,
+            "iteration": 1000,
+            "server-service-provider": "Jersey",
+            "avg-diff-time": 0.16077090700000002
+        }, {
+            "server": "Wildfly Server 14",
+            "start-time": 127132060177919,
+            "diff-time": 111156782,
+            "client-service-provider": "OKHttp",
+            "end-time": 127132171337532,
+            "iteration": 1000,
+            "server-service-provider": "Resteasy",
+            "avg-diff-time": 0.11091380499999999
+        }, {
+            "server": "Jetty Server",
+            "start-time": 127132175189488,
+            "diff-time": 7978119603,
+            "client-service-provider": "Jersey Client",
+            "end-time": 127140153312757,
+            "iteration": 1000,
+            "server-service-provider": "Spark",
+            "avg-diff-time": 7.977418801
+        }, {
+            "server": "Jetty Server",
+            "start-time": 127140154192691,
+            "diff-time": 5468671931,
+            "client-service-provider": "Jersey Client",
+            "end-time": 127145622867553,
+            "iteration": 1000,
+            "server-service-provider": "Javalin",
+            "avg-diff-time": 5.467982632
+        }, {
+            "server": "Jetty Server",
+            "start-time": 127145623453451,
+            "diff-time": 4115529270,
+            "client-service-provider": "Jersey Client",
+            "end-time": 127149738985225,
+            "iteration": 1000,
+            "server-service-provider": "Spring Boot",
+            "avg-diff-time": 4.114398966
+        }, {
+            "server": "Payara Server 5",
+            "start-time": 127149739568797,
+            "diff-time": 3486087368,
+            "client-service-provider": "Jersey Client",
+            "end-time": 127153225658680,
+            "iteration": 1000,
+            "server-service-provider": "Jersey",
+            "avg-diff-time": 3.484837855
+        }, {
+            "server": "Wildfly Server 14",
+            "start-time": 127153226101375,
+            "diff-time": 3018230660,
+            "client-service-provider": "Jersey Client",
+            "end-time": 127156244334503,
+            "iteration": 1000,
+            "server-service-provider": "Resteasy",
+            "avg-diff-time": 3.016956384
+        }, {
+            "server": "Jetty Server",
+            "start-time": 127156246542236,
+            "diff-time": 3741220735,
+            "client-service-provider": "UniTest",
+            "end-time": 127159987766372,
+            "iteration": 1000,
+            "server-service-provider": "Spark String",
+            "avg-diff-time": 3.740820051
+        }, {
+            "server": "Jetty Server",
+            "start-time": 127159988291957,
+            "diff-time": 2715511531,
+            "client-service-provider": "UniTest",
+            "end-time": 127162703805425,
+            "iteration": 1000,
+            "server-service-provider": "Spark JSON",
+            "avg-diff-time": 2.714950687
+        }, {
+            "server": "Jetty Server",
+            "start-time": 127162704389953,
+            "diff-time": 2884696193,
+            "client-service-provider": "UniTest",
+            "end-time": 127165589087825,
+            "iteration": 1000,
+            "server-service-provider": "Javalin",
+            "avg-diff-time": 2.8840708029999997
+        }, {
+            "server": "Jetty Server",
+            "start-time": 127165589624201,
+            "diff-time": 167670636,
+            "client-service-provider": "UniTest",
+            "end-time": 127165757296619,
+            "iteration": 1000,
+            "server-service-provider": "Spring Boot",
+            "avg-diff-time": 0.16733724900000002
+        }, {
+            "server": "Payara Server 5",
+            "start-time": 127165757792702,
+            "diff-time": 232788010,
+            "client-service-provider": "UniTest",
+            "end-time": 127165990582481,
+            "iteration": 1000,
+            "server-service-provider": "Jersey",
+            "avg-diff-time": 0.232394814
+        }, {
+            "server": "Wildfly Server 14",
+            "start-time": 127165991185776,
+            "diff-time": 206098647,
+            "client-service-provider": "UniTest",
+            "end-time": 127166197286488,
+            "iteration": 1000,
+            "server-service-provider": "Resteasy",
+            "avg-diff-time": 0.205664631
+        }]
+}
