@@ -36,9 +36,9 @@ public class RESTService {
     private static final String JAVALIN_URL = "http://localhost:7000/hello/javalin";
     private static final String SPARK_URL = "http://localhost:4567/hello/spark";
     private static final String SPRINGBOOT_URL = "http://localhost:8080/hello/spring-boot";
-    private static final String JERSEY_URL = "http://localhost:27643/JerseyProxyPayara/hello/jersey";
+    private static final String JERSEY_URL = "http://localhost:27643/JerseyInPayara/hello/jersey";
     private static final String RESTEASY_URL = "http://localhost:8089/RestEasyProxy/hello/resteasy";
-    private static final String JERSEY_TOMCAT_URL = "http://localhost:8082/JerseyProxyTomcat/hello/tomcat";
+    private static final String JERSEY_TOMCAT_URL = "http://localhost:8082/JerseyInTomcat/hello/tomcat";
 
     private static final OkHttpClient OK_HTTP_CLIENT = new OkHttpClient();
 
@@ -65,7 +65,7 @@ public class RESTService {
         timeDiff("Payara Server 5", "OKHttp", "Jersey", JERSEY_URL, Unchecked.function((String u) -> {
             return okhttpGETRequest(OK_HTTP_CLIENT, u);
         }).andThen(Unchecked.function(d -> d == null ? "" : d.string())));
-        
+
         timeDiff("Tomcat", "OKHttp", "Jersey", JERSEY_TOMCAT_URL, Unchecked.function((String u) -> {
             return okhttpGETRequest(OK_HTTP_CLIENT, u);
         }).andThen(Unchecked.function(d -> d == null ? "" : d.string())));
@@ -84,7 +84,7 @@ public class RESTService {
         timeDiff("Jetty Server", "UniTest", "Spring Boot", SPRINGBOOT_URL, Unchecked.function(this::unirestJSONGETRequest));
 
         timeDiff("Payara Server 5", "UniTest", "Jersey", JERSEY_URL, Unchecked.function(this::unirestJSONGETRequest));
-        
+
         timeDiff("Tomcat", "UniTest", "Jersey", JERSEY_TOMCAT_URL, Unchecked.function(this::unirestJSONGETRequest));
 
         timeDiff("Wildfly Server 14", "UniTest", "Resteasy", RESTEASY_URL, Unchecked.function(this::unirestJSONGETRequest));
@@ -97,9 +97,9 @@ public class RESTService {
         timeDiff("Jetty Server", "Jersey Client", "Javalin", JAVALIN_URL, Unchecked.function(this::jerseyGetRequest));
 
         timeDiff("Jetty Server", "Jersey Client", "Spring Boot", SPRINGBOOT_URL, Unchecked.function(this::jerseyGetRequest));
-        
+
         timeDiff("Payara Server 5", "Jersey Client", "Jersey", JERSEY_URL, Unchecked.function(this::jerseyGetRequest));
-        
+
         timeDiff("Tomcat", "Jersey Client", "Jersey", JERSEY_TOMCAT_URL, Unchecked.function(this::jerseyGetRequest));
 
         timeDiff("Wildfly Server 14", "Jersey Client", "Resteasy", RESTEASY_URL, Unchecked.function(this::jerseyGetRequest));
@@ -138,28 +138,31 @@ public class RESTService {
     }
 
     private <I, O> void timeDiff(String serverName, String clientTitle, String serverTitle, I url, Function<I, O> func) {
-        int count;
+        try {
+            int count;
 //        for (int p = 100; p <= 1000; p *= 10) {
-        count = 1000;
-        JSONObject result = new JSONObject();
-        result.put("start-time", System.nanoTime());
-        long begin = System.nanoTime();
-        long[] times = new long[count];
-        for (int i = 0; i < count; i++) {
-            long startTime = System.nanoTime();
-            func.apply(url);
-            times[i] = System.nanoTime() - startTime;
+            count = 1000;
+            JSONObject result = new JSONObject();
+            result.put("start-time", System.nanoTime());
+            long begin = System.nanoTime();
+            long[] times = new long[count];
+            for (int i = 0; i < count; i++) {
+                long startTime = System.nanoTime();
+                func.apply(url);
+                times[i] = System.nanoTime() - startTime;
+            }
+            long end = System.nanoTime();
+            result.put("end-time", System.nanoTime());
+            double diffAvg = Arrays.stream(times).average().getAsDouble();
+            result.put("diff-time", end - begin);
+            result.put("avg-diff-time", diffAvg);
+            result.put("iteration", count);
+            result.put("server-service-provider", serverTitle);
+            result.put("client-service-provider", clientTitle);
+            result.put("server", serverName);
+            data.put(result);
+        } catch (Exception e) {
         }
-        long end = System.nanoTime();
-        result.put("end-time", System.nanoTime());
-        double diffAvg = Arrays.stream(times).average().getAsDouble();
-        result.put("diff-time", end - begin);
-        result.put("avg-diff-time", diffAvg);
-        result.put("iteration", count);
-        result.put("server-service-provider", serverTitle);
-        result.put("client-service-provider", clientTitle);
-        result.put("server", serverName);
-        data.put(result);
 //        }
     }
 }

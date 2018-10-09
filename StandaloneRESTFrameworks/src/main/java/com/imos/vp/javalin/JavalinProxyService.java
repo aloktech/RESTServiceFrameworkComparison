@@ -20,6 +20,7 @@ public class JavalinProxyService {
         Javalin app = Javalin.create().start(7000);
         app.get("/hello/javalin", ctx -> {
             JSONObject data = new JSONObject();
+            data.put("javaHome", System.getProperty("java.home"));
             data.put("data", "Hello World!");
             data.put("time", LocalTime.now());
             data.put("serviceProvider", "Javalin");

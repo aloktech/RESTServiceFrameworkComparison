@@ -17,16 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RESTController {
 
-    private JSONObject data = new JSONObject();
-
-    {
+    @RequestMapping("/hello/spring-boot")
+    public String greeting() {
+        JSONObject data = new JSONObject();
+        data.put("javaHome", System.getProperty("java.home"));
         data.put("data", "Hello World!");
         data.put("time", LocalTime.now());
         data.put("serviceProvider", "SpringBoot");
-    }
-
-    @RequestMapping("/hello/spring-boot")
-    public String greeting() {
         return data.toString();
     }
 }

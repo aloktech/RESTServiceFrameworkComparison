@@ -20,6 +20,7 @@ public class SparkProxyService {
 
         get("/hello/spark", (req, res) -> {
             JSONObject data = new JSONObject();
+            data.put("javaHome", System.getProperty("java.home"));
             data.put("data", "Hello World!");
             data.put("time", LocalTime.now());
             data.put("serviceProvider", "Spark");

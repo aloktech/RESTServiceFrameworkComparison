@@ -15,9 +15,10 @@ and open the template in the editor.
         <div style="align-content: center;text-align: center;">REST Framework time taken for 1000 requests</div>
         <canvas id="ui-chart"></canvas>
         <script>
-            var url = 'http://localhost:27643/UIRESTService/rest/all';
+            var url = 'http://localhost:27643/RESTServiceForUI/rest/all';
             fetch(url)
                     .then(data => {
+                        console.log(data);
                         return data.json();
                     })
                     .then(res => {
@@ -43,7 +44,10 @@ and open the template in the editor.
                         updateData(chart, 0, chartDataa);
                         updateData(chart, 1, chartDatab);
                         updateData(chart, 2, chartDatac);
+                    }).catch(e => {
+                        console.log(e);
                     });
+                            ;
             var ctx = document.getElementById('ui-chart').getContext('2d');
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
