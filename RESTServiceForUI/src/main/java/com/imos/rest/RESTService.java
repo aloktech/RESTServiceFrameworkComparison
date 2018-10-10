@@ -10,11 +10,13 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Function;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -43,12 +45,38 @@ public class RESTService {
     private static final OkHttpClient OK_HTTP_CLIENT = new OkHttpClient();
 
     private final JSONArray data = new JSONArray();
+    private int iteration = 1000;
+
+    @Path("all/{iteration}")
+    @GET
+    public String getDataByIterration(@PathParam("iteration") int iteration) {
+        this.iteration = iteration;
+
+        executeScenarios();
+
+        JsonObject json = Json.createObjectBuilder()
+                .add("time", LocalTime.now().toString())
+                .add("result", data.toString())
+                .build();
+        return json.toString();
+    }
 
     @Path("all")
     @GET
     public String getData() {
+
+        executeScenarios();
+
+        JsonObject json = Json.createObjectBuilder()
+                .add("time", LocalTime.now().toString())
+                .add("result", data.toString())
+                .build();
+        return json.toString();
+    }
+
+    private void executeScenarios() {
         /*
-            OKHttp
+        OKHttp
          */
         timeDiff("Jetty Server", "OKHttp", "Spark", SPARK_URL, Unchecked.function((String d) -> {
             return okhttpGETRequest(OK_HTTP_CLIENT, d);
@@ -75,7 +103,7 @@ public class RESTService {
         }).andThen(Unchecked.function(d -> d == null ? "" : d.string())));
 
         /*
-            UniTest
+        UniTest
          */
         timeDiff("Jetty Server", "UniTest", "Spark", SPARK_URL, Unchecked.function(this::unirestJSONGETRequest));
 
@@ -90,7 +118,7 @@ public class RESTService {
         timeDiff("Wildfly Server 14", "UniTest", "Resteasy", RESTEASY_URL, Unchecked.function(this::unirestJSONGETRequest));
 
         /*
-            Jersey
+        Jersey
          */
         timeDiff("Jetty Server", "Jersey Client", "Spark", SPARK_URL, Unchecked.function(this::jerseyGetRequest));
 
@@ -103,12 +131,6 @@ public class RESTService {
         timeDiff("Tomcat", "Jersey Client", "Jersey", JERSEY_TOMCAT_URL, Unchecked.function(this::jerseyGetRequest));
 
         timeDiff("Wildfly Server 14", "Jersey Client", "Resteasy", RESTEASY_URL, Unchecked.function(this::jerseyGetRequest));
-
-        JsonObject json = Json.createObjectBuilder()
-                .add("time", LocalTime.now().toString())
-                .add("result", data.toString())
-                .build();
-        return json.toString();
     }
 
     private ResponseBody okhttpGETRequest(OkHttpClient client, String url) throws IOException {
@@ -138,11 +160,12 @@ public class RESTService {
     }
 
     private <I, O> void timeDiff(String serverName, String clientTitle, String serverTitle, I url, Function<I, O> func) {
+        JSONObject result = new JSONObject();
+        int count = iteration;
         try {
-            int count;
+
 //        for (int p = 100; p <= 1000; p *= 10) {
-            count = 1000;
-            JSONObject result = new JSONObject();
+            count = iteration == 0 ? 1000 : iteration;
             result.put("start-time", System.nanoTime());
             long begin = System.nanoTime();
             long[] times = new long[count];
@@ -162,6 +185,18 @@ public class RESTService {
             result.put("server", serverName);
             data.put(result);
         } catch (Exception e) {
+            Throwable th = e;
+            JSONArray errorArray = new JSONArray();
+            while(Objects.nonNull(th)) {
+                JSONObject errorResult = new JSONObject();
+                errorResult.put("error-msg", th.getMessage());
+                errorResult.put("error-class", th.getClass().getSimpleName());
+                errorArray.put(errorResult);
+                th = th.getCause();
+            }
+            JSONObject error = new JSONObject();
+            error.put("errors", errorArray);
+            data.put(error);
         }
 //        }
     }
