@@ -30,7 +30,7 @@ public class HelidonRESTService implements Service {
     @Override
     public final void update(final Routing.Rules rules) {
         rules
-            .get("/hello/helidon", this::getDefaultMessage);
+            .get("/helidon", this::getDefaultMessage);
     }
 
     private void getDefaultMessage(final ServerRequest request,

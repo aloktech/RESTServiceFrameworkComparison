@@ -18,7 +18,7 @@ public class JavalinRESTService {
     public static void main(String[] args) {
 
         Javalin app = Javalin.create().start(7000);
-        app.get("/hello/javalin", ctx -> {
+        app.get("/rest/javalin", ctx -> {
             JSONObject data = new JSONObject();
             data.put("javaHome", System.getProperty("java.home"));
             data.put("data", "Hello World!");

@@ -28,12 +28,7 @@ import io.helidon.webserver.json.JsonSupport;
 /**
  * Simple Hello World rest application.
  */
-public final class Main {
-
-    /**
-     * Cannot be instantiated.
-     */
-    private Main() { }
+public final class HelidonApp {
 
     /**
      * Creates new {@link Routing}.
@@ -64,8 +59,7 @@ public final class Main {
     protected static WebServer startServer() throws IOException {
 
         // load logging configuration
-        LogManager.getLogManager().readConfiguration(
-                Main.class.getResourceAsStream("/logging.properties"));
+        LogManager.getLogManager().readConfiguration(HelidonApp.class.getResourceAsStream("/logging.properties"));
 
         // By default this will pick up application.yaml from the classpath
         Config config = Config.create();

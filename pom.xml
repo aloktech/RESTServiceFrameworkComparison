@@ -18,7 +18,8 @@
         <module>JerseyInTomcatServer</module>
         <module>RestEasyInWildlfyServer</module>
         <module>JerseyInPayaraServer</module>
-        <module>HelidonRESTService</module>
+        <module>ProteusRESTServer</module>
+        <module>HelidonRESTServer</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
