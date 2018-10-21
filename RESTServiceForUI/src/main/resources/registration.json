@@ -1,0 +1,31 @@
+{
+    "services": [{
+            "url_get": "http://localhost:27643/JerseyInPayara/hello/jersey",
+            "rest_service": "Jersey",
+            "server": "Payara 5"
+        }, {
+            "url_get": "http://localhost:8082/JerseyInTomcat",
+            "rest_service": "Jersey",
+            "server": "Tomcat"
+        }, {
+            "url_get": "http://localhost:7000/hello/javalin",
+            "rest_service": "Javalin",
+            "server": "Jetty"
+        }, {
+            "url_get": "http://localhost:4567/hello/spark",
+            "rest_service": "Spark Java",
+            "server": "Jetty"
+        }, {
+            "url_get": "http://localhost:8080/hello/spring-boot",
+            "rest_service": "Spring Boot 2.0",
+            "server": "Tomcat"
+        }, {
+            "url_get": "http://localhost:8089/RestEasyProxy/hello/resteasy",
+            "rest_service": "RestEasy",
+            "server": "Wildlfy 14"
+        }, {
+            "url_get": "http://localhost:8084/rest/hello/helidon",
+            "rest_service": "Helidon",
+            "server": "Netty"
+        }]
+}

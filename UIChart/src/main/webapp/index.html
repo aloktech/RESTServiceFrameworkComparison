@@ -16,38 +16,54 @@ and open the template in the editor.
         <canvas id="ui-chart"></canvas>
         <script>
             var url = 'http://localhost:27643/RESTServiceForUI/rest/all';
-            fetch(url)
+            fetch(new Request(url, {method: 'GET', cache: 'reload'}))
                     .then(data => {
-                        console.log(data);
                         return data.json();
                     })
                     .then(res => {
-                        var data = JSON.parse(res.result);
+                        console.log(res);
+                        var data = res.result;
                         var size = data.length;
                         var chartDataa = [];
                         var chartDatab = [];
                         var chartDatac = [];
-                        var a = 0, b = 0, c = 0;
+                        var index = [];
+                        index[0] = 0;
+                        index[1] = 0;
+                        index[2] = 0;
+                        var p = 0;
+                        var label = '', prelabel = '';
+                        var labels = [];
                         for (i = 0; i < size; i++) {
+                            if (data[i]['server-rest-service-provider'] !== data[i]['server'])
+                                label = data[i]['server-rest-service-provider'] + ' in ' + data[i]['server'];
+                            else 
+                               label = data[i]['server-rest-service-provider'];
+                            if (label !== prelabel) {
+                                prelabel = label;
+                                labels[p] = label;
+                                p++;
+                            }
                             var val = Number(data[i]['avg-diff-time'] / 1000).toFixed();
-                            if ('OKHttp' === data[i]['client-service-provider']) {
-                                chartDataa[a] = val;
-                                a++;
-                            } else if ('Jersey Client' === data[i]['client-service-provider']) {
-                                chartDatab[b] = val;
-                                b++;
-                            } else if ('UniTest' === data[i]['client-service-provider']) {
-                                chartDatac[c] = val;
-                                c++;
+                            var client = data[i]['client-rest-service-provider'];
+                            if ('OKHttp Client' === client) {
+                                chartDataa[index[0]] = val;
+                                index[0]++;
+                            } else if ('Jersey Client' === client) {
+                                chartDatab[index[1]] = val;
+                                index[1]++;
+                            } else if ('UniRest Client' === client) {
+                                chartDatac[index[2]] = val;
+                                index[2]++;
                             }
                         }
-                        updateData(chart, 0, chartDataa);
-                        updateData(chart, 1, chartDatab);
-                        updateData(chart, 2, chartDatac);
+                        updateData(chart, 0, chartDataa, labels);
+                        updateData(chart, 1, chartDatab, labels);
+                        updateData(chart, 2, chartDatac, labels);
                     }).catch(e => {
-                        console.log(e);
-                    });
-                            ;
+                console.log(e);
+            });
+            ;
             var ctx = document.getElementById('ui-chart').getContext('2d');
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
@@ -55,7 +71,8 @@ and open the template in the editor.
 
                 // The data for our dataset
                 data: {
-                    labels: ["Spark Java(Standalone)", "Javalin(Standalone)", "Spring Boot 2.0(Standalone)", "Jersey(dep. in Payara 5)","Jersey(dep. in Tomcat)", "Resteasy(dep. in Wildfly 14)"],
+                    //labels: ["Spark Java(Standalone)", "Javalin(Standalone)", "Spring Boot 2.0(Standalone)", "Jersey(dep. in Payara 5)","Jersey(dep. in Tomcat)"
+                    //    , "Resteasy(dep. in Wildfly 14)", "Helidon(dep. in Netty Server)"],
                     datasets: [{
                             label: "OKHTTP Client",
                             backgroundColor: 'rgb(255, 99, 0)',
@@ -102,7 +119,8 @@ and open the template in the editor.
                 }
             });
 
-            function updateData(chart, index, data) {
+            function updateData(chart, index, data, labels) {
+                chart.data.labels = labels;
                 chart.data.datasets[index].data = data;
                 chart.update();
             }

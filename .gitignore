@@ -1,1 +1,17 @@
 /JerseyInPayara/target/
+/SparkRESETService/target/
+/SpringRESTService/target/
+/JavalinRESETService/target/
+/ClientServiceProvider/target/
+/JerseyClient/target/
+/SparkRESTService/target/
+/JavalinRESTService/target/
+/JerseyRESTClient/target/
+/SparkRESTServer/target/
+/JavalinRESTServer/target/
+/SpringRESTServer/target/
+/OKHttpClient/target/
+/UniRESTClient/target/
+/SpringBootRESTServer/target/
+/HelidonRESTServer/target/
+/HelidonRESTService/target/

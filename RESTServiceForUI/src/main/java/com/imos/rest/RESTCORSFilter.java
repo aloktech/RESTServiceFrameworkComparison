@@ -31,18 +31,15 @@ public class RESTCORSFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-        
-        // Authorize (allow) all domains to consume the content
-        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
-        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Methods", "GET");
 
-        // For HTTP OPTIONS verb/method reply with ACCEPTED status code -- per CORS handshake
+        httpResponse.addHeader("Access-Control-Allow-Origin", "*");
+        httpResponse.addHeader("Access-Control-Allow-Methods", "GET");
+
         if (httpRequest.getMethod().equals("OPTIONS")) {
             httpResponse.setStatus(HttpServletResponse.SC_ACCEPTED);
             return;
         }
 
-        // pass the request along the filter chain
         chain.doFilter(httpRequest, httpResponse);
     }
 
