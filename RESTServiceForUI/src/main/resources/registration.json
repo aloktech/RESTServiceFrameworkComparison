@@ -1,26 +1,26 @@
 {
     "services": [{
-            "url_get": "http://localhost:27643/JerseyInPayara/hello/jersey",
+            "url_get": "http://localhost:55440/JerseyInPayaraServer/rest/jersey",
             "rest_service": "Jersey",
             "server": "Payara 5"
         }, {
-            "url_get": "http://localhost:8082/JerseyInTomcat",
+            "url_get": "http://localhost:8087/JerseyInTomcat/rest/jersey",
             "rest_service": "Jersey",
             "server": "Tomcat"
         }, {
-            "url_get": "http://localhost:7000/hello/javalin",
+            "url_get": "http://localhost:7000/rest/javalin",
             "rest_service": "Javalin",
             "server": "Jetty"
         }, {
-            "url_get": "http://localhost:4567/hello/spark",
+            "url_get": "http://localhost:4567/rest/spark",
             "rest_service": "Spark Java",
             "server": "Jetty"
         }, {
-            "url_get": "http://localhost:8080/hello/spring-boot",
+            "url_get": "http://localhost:8083/rest/spring-boot",
             "rest_service": "Spring Boot 2.0",
             "server": "Tomcat"
         }, {
-            "url_get": "http://localhost:8089/JerseyInWildfly/hello/resteasy",
+            "url_get": "http://localhost:8099/RestEasyInWildlfyServer/rest/resteasy",
             "rest_service": "RestEasy",
             "server": "Wildlfy 14"
         }, {

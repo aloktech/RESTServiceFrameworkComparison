@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RESTController {
 
-    @RequestMapping("/hello/spring-boot")
+    @RequestMapping("/rest/spring-boot")
     public String greeting() {
         JSONObject data = new JSONObject();
         data.put("javaHome", System.getProperty("java.home"));

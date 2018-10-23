@@ -15,10 +15,10 @@ import org.json.JSONObject;
  *
  * @author pintu
  */
-@Path("/hello")
+@Path("/rest")
 public class RESTService {
 
-    @Path("/tomcat")
+    @Path("/jersey")
     @GET
     public Response getData() {
         JSONObject data = new JSONObject();

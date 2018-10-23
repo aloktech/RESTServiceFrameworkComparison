@@ -18,7 +18,7 @@ public class SparkRESTService {
 
     public static void main(String[] args) {
 
-        get("/hello/spark", (req, res) -> {
+        get("/rest/spark", (req, res) -> {
             JSONObject data = new JSONObject();
             data.put("javaHome", System.getProperty("java.home"));
             data.put("data", "Hello World!");

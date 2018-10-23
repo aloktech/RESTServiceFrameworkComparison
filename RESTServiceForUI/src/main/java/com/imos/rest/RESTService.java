@@ -13,6 +13,7 @@ import java.util.function.Function;
 import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObject;
+import lombok.extern.log4j.Log4j2;
 import org.jooq.lambda.Unchecked;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +23,7 @@ import org.json.JSONObject;
  *
  * @author pintu
  */
+@Log4j2
 public class RESTService {
 
     private JSONArray data = new JSONArray();
@@ -86,13 +88,27 @@ public class RESTService {
             String url = info.getUrlGET();
             try {
                 s.config();
-                s.execute(url);
+                String d = s.execute(url);
+                checkDataValidity(d);
                 data = timeDiff(data, info.getServerName(), s.getClientServiceName(), info.getRestServiceName(),
                         url, Unchecked.function(u -> s.execute(u)), iteration);
                 s.close();
             } catch (Exception e) {
+                log.error("Failed for url : '{}' caused by {}", url, e.getMessage());
             }
         });
+    }
+
+    private void checkDataValidity(String data) {
+        try {
+            log.info(data);
+            JSONObject json = new JSONObject(data);
+            if (json.keySet().isEmpty()) {
+                throw new IllegalStateException("Empty JSON data");
+            }
+        } catch (JSONException e) {
+            throw new IllegalStateException("Invalid data : " + e.getMessage());
+        }
     }
 
     private <I, O> JSONArray timeDiff(JSONArray data, String serverName, String clientServiceName, String serverServiceName, I url, Function<I, O> func, int iteration) {
