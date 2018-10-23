@@ -15,7 +15,7 @@ and open the template in the editor.
         <div style="align-content: center;text-align: center;">REST Framework time taken for 1000 requests</div>
         <canvas id="ui-chart"></canvas>
         <script>
-            var url = 'http://localhost:27643/RESTServiceForUI/rest/all';
+            var url = 'http://localhost:55440/RESTServiceForUI/rest/all';
             fetch(new Request(url, {method: 'GET', cache: 'reload'}))
                     .then(data => {
                         return data.json();

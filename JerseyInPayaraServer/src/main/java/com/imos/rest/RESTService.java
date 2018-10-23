@@ -14,7 +14,7 @@ import org.json.JSONObject;
  *
  * @author pintu
  */
-@Path("hello")
+@Path("rest")
 public class RESTService {
 
     @Path("jersey")
