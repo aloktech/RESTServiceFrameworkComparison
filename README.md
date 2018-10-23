@@ -65,5 +65,5 @@ Deployment
 - ResteasyInWildfly has to deployed in Wildfly
 - JerseyInTomcatServer has to deployed in Tomcat
 - RESTServiceForUI has to deployed in Payara
-- UIChart has to deployed in Tomcat
+- UIChart has to deployed in Payara
 - Other Standlone Frameworks has to be run as usual java program
