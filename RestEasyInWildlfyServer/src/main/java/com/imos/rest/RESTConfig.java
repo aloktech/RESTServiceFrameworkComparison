@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.imos;
+package com.imos.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

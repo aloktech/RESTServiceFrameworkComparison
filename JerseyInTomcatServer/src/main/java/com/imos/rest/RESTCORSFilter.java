@@ -30,11 +30,9 @@ public class RESTCORSFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        // Authorize (allow) all domains to consume the content
         ((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
         ((HttpServletResponse) response).addHeader("Access-Control-Allow-Methods", "GET, OPTIONS, HEAD, POST");
 
-        // For HTTP OPTIONS verb/method reply with ACCEPTED status code -- per CORS handshake
         if (httpRequest.getMethod().equals("OPTIONS")) {
             httpResponse.setStatus(HttpServletResponse.SC_ACCEPTED);
             return;
