@@ -6,24 +6,25 @@
 package com.imos;
 
 import java.time.LocalTime;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 import org.json.JSONObject;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author pintu
  */
-@RestController
-public class RESTController {
+@Path("rest")
+public class RESTService {
 
-    @RequestMapping("/rest/spring-boot")
-    public String greeting() {
+    @Path("resteasy")
+    @GET
+    public String getData() {
         JSONObject data = new JSONObject();
         data.put("javaHome", System.getProperty("java.home"));
         data.put("data", "Hello World!");
         data.put("time", LocalTime.now());
-        data.put("serviceProvider", "SpringBoot");
+        data.put("serviceProvider", "Resteasy");
         return data.toString();
     }
 }
