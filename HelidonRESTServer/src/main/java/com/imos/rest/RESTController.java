@@ -1,4 +1,4 @@
-package com.imos;
+package com.imos.rest;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -9,7 +9,7 @@ import io.helidon.webserver.ServerResponse;
 import io.helidon.webserver.Service;
 import java.time.LocalTime;
 
-public class HelidonRESTService implements Service {
+public class RESTController implements Service {
 
     @Override
     public final void update(final Routing.Rules rules) {
@@ -21,10 +21,11 @@ public class HelidonRESTService implements Service {
                                    final ServerResponse response) {
 
         JsonObject returnObject = Json.createObjectBuilder()
-                .add("javaHome", System.getProperty("java.home"))
+                .add("java-home", System.getProperty("java.home"))
                 .add("time", LocalTime.now().toString())
                 .add("data", "Hello World!")
-                .add("serviceProvider", "Helidon")
+                .add("rest-service", "Helidon")
+                .add("server", "Netty")
                 .build();
         response.send(returnObject);
     }

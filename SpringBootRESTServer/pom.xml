@@ -21,7 +21,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>SparkRESTServer</finalName>
+        <finalName>SpringBootRESTServer</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -54,7 +54,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.imos.SparkRESTService</mainClass>
+                            <mainClass>com.imos.rest.SpringBootRESTService</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -21,10 +21,10 @@ public class RESTService {
     @GET
     public String getData() {
         JSONObject data = new JSONObject();
-        data.put("javaHome", System.getProperty("java.home"));
+        data.put("java-home", System.getProperty("java.home"));
         data.put("data", "Hello World!");
         data.put("time", LocalTime.now());
-        data.put("restService", "Jersey");
+        data.put("rest-service", "Jersey");
         data.put("server", "Payara");
         return data.toString();
     }

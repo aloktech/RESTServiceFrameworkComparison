@@ -1,5 +1,7 @@
 FROM openjdk:8
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-RUN javac Main.java
-CMD ["java", "Main"]
+WORKDIR /
+CMD ["mkdir", "lib"]
+ADD target/SparkRESTServer.jar SparkRESTServer.jar
+ADD target/lib/*.jar lib/
+EXPOSE 8095
+CMD ["java", "-jar","SparkRESTServer.jar"]

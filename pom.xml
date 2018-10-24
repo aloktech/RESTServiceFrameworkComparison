@@ -16,7 +16,7 @@
         <module>ProteusRESTServer</module>
         <module>HelidonRESTServer</module>
         <module>JerseyInTomcatServer</module>
-        <module>RestEasyInWildlfyServer</module>
+        <module>RestEasyInWildflyServer</module>
         <module>JerseyInPayaraServer</module>
         <module>RESTServiceForUI</module>
         <module>UIChart</module>

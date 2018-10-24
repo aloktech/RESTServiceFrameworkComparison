@@ -15,7 +15,7 @@ and open the template in the editor.
         <div style="align-content: center;text-align: center;">REST Framework time taken for 1000 requests</div>
         <canvas id="ui-chart"></canvas>
         <script>
-            var url = 'http://192.168.1.8:27643/RESTServiceForUI/rest/all';
+            var url = 'http://10.131.177.224:8091/RESTServiceForUI/rest/all';
 
             var init = {
                 method: "GET",
@@ -43,10 +43,15 @@ and open the template in the editor.
                         var label = '', prelabel = '';
                         var labels = [];
                         for (i = 0; i < size; i++) {
-                            if (data[i]['server-rest-service-provider'] !== data[i]['server'])
-                                label = data[i]['server-rest-service-provider'] + ' in ' + data[i]['server'];
-                            else
+                            if (data[i]['server-rest-service-provider'] === undefined) {
+                                continue;
+                            }
+                            if (data[i]['server-rest-service-provider'] !== data[i]['server']) {
+                                 label = data[i]['server-rest-service-provider'] + ' in ' + data[i]['server'];
+                            } else {
                                 label = data[i]['server-rest-service-provider'];
+                            }
+                                
                             if (label !== prelabel) {
                                 prelabel = label;
                                 labels[p] = label;

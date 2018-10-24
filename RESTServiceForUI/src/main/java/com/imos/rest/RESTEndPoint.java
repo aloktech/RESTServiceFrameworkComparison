@@ -33,7 +33,6 @@ public class RESTEndPoint {
 
     @GET
     public String getMsg() {
-
         JSONObject json = new JSONObject();
         json.put("time", LocalTime.now().toString());
         return json.toString();
@@ -50,6 +49,15 @@ public class RESTEndPoint {
     @Path("deregis")
     public Response serviceDeregistration(String data) {
         JSONObject json = service.deregistration(data);
+        return Response.accepted().entity(json.toString()).build();
+    }
+
+    @DELETE
+    @Path("deregisall")
+    public Response serviceDeregistrationAll() {
+        service.deregistrationOfAll();
+        JSONObject json = new JSONObject();
+        json.put("msg", "All registered service are removed");
         return Response.accepted().entity(json.toString()).build();
     }
 

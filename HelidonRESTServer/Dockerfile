@@ -1,6 +1,7 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-FROM alpine:latest
-
-CMD ["/bin/sh"]
+FROM openjdk:8
+WORKDIR /
+CMD ["mkdir", "lib"]
+ADD target/HelidonRESTServer.jar HelidonRESTServer.jar
+ADD target/lib/*.jar lib/
+EXPOSE 8099
+CMD ["java", "-jar","HelidonRESTServer.jar"]

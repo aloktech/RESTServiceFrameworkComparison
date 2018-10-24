@@ -21,4 +21,4 @@
  *
  * @see io.helidon.examples.quickstart.se.Main
  */
-package com.imos;
+package com.imos.rest;

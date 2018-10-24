@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.imos;
+package com.imos.rest;
 
 import java.time.LocalTime;
 import org.json.JSONObject;
@@ -17,13 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RESTController {
 
-    @RequestMapping("/rest/spring-boot")
+    @RequestMapping("/rest/springboot")
     public String greeting() {
         JSONObject data = new JSONObject();
-        data.put("javaHome", System.getProperty("java.home"));
+        data.put("java-home", System.getProperty("java.home"));
         data.put("data", "Hello World!");
         data.put("time", LocalTime.now());
-        data.put("serviceProvider", "SpringBoot");
+        data.put("rest-service", "SpringBoot");
+        data.put("server", "Tomcat");
         return data.toString();
     }
 }

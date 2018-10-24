@@ -44,6 +44,10 @@ public class RESTService {
         return json;
     }
 
+    public void deregistrationOfAll() throws JSONException {
+        cache.getAllActiveServices().clear();
+    }
+    
     public JSONObject deregistration(String data1) throws JSONException {
         JSONObject json = new JSONObject(data1);
         JSONArray array = json.getJSONArray("services");

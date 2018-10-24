@@ -22,10 +22,10 @@ public class RESTService {
     @GET
     public Response getData() {
         JSONObject data = new JSONObject();
-        data.put("javaHome", System.getProperty("java.home"));
+        data.put("java-home", System.getProperty("java.home"));
         data.put("data", "Hello World!");
         data.put("time", LocalTime.now());
-        data.put("restService", "Jersey");
+        data.put("rest-service", "Jersey");
         data.put("server", "Tomcat");
         return Response.ok().entity(data.toString()).build();
     }

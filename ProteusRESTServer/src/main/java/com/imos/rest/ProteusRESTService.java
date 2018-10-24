@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.imos;
+package com.imos.rest;
 
 import io.sinistral.proteus.ProteusApplication;
 
@@ -11,11 +11,11 @@ import io.sinistral.proteus.ProteusApplication;
  *
  * @author pintu
  */
-public class ProteusApp extends ProteusApplication {
+public class ProteusRESTService extends ProteusApplication {
 
     public static void main(String[] args) {
 
-        ProteusApp app = new ProteusApp();
+        ProteusRESTService app = new ProteusRESTService();
         app.addService(io.sinistral.proteus.services.SwaggerService.class);
         app.addController(RESTController.class);
         app.start();

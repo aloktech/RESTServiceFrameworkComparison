@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.imos;
+package com.imos.rest;
 
 import com.google.inject.Singleton;
 import io.sinistral.proteus.server.ServerRequest;
@@ -33,10 +33,11 @@ public class RESTController {
     @Produces({MediaType.TEXT_PLAIN, MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public ServerResponse<ByteBuffer> helloWorldText(ServerRequest request) {
         JSONObject data = new JSONObject();
-            data.put("javaHome", System.getProperty("java.home"));
+            data.put("java-home", System.getProperty("java.home"));
             data.put("data", "Hello World!");
             data.put("time", LocalTime.now());
-            data.put("serviceProvider", "Javalin");
+            data.put("rest-service", "Proteus");
+            data.put("server", "Undertow");
         return response(data.toString());
     }
 }

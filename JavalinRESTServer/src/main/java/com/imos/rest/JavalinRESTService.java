@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.imos;
+package com.imos.rest;
 
 import io.javalin.Javalin;
 import java.time.LocalTime;
@@ -20,10 +20,11 @@ public class JavalinRESTService {
         Javalin app = Javalin.create().start(7000);
         app.get("/rest/javalin", ctx -> {
             JSONObject data = new JSONObject();
-            data.put("javaHome", System.getProperty("java.home"));
+            data.put("java-home", System.getProperty("java.home"));
             data.put("data", "Hello World!");
             data.put("time", LocalTime.now());
-            data.put("serviceProvider", "Javalin");
+            data.put("rest-service", "Javalin");
+            data.put("server", "Jetty");
             ctx.result(data.toString());
         });
     }

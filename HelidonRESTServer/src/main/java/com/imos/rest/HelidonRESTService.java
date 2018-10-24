@@ -1,4 +1,4 @@
-package com.imos;
+package com.imos.rest;
 
 import java.io.IOException;
 import java.util.logging.LogManager;
@@ -9,12 +9,12 @@ import io.helidon.webserver.ServerConfiguration;
 import io.helidon.webserver.WebServer;
 import io.helidon.webserver.json.JsonSupport;
 
-public final class HelidonApp {
+public final class HelidonRESTService {
 
     private static Routing createRouting() {
         return Routing.builder()
                 .register(JsonSupport.get())
-                .register("/rest", new HelidonRESTService())
+                .register("/rest", new RESTController())
                 .build();
     }
 
@@ -25,7 +25,7 @@ public final class HelidonApp {
     protected static WebServer startServer() throws IOException {
 
         // load logging configuration
-        LogManager.getLogManager().readConfiguration(HelidonApp.class.getResourceAsStream("/logging.properties"));
+        LogManager.getLogManager().readConfiguration(HelidonRESTService.class.getResourceAsStream("/logging.properties"));
 
         // By default this will pick up application.yaml from the classpath
         Config config = Config.create();

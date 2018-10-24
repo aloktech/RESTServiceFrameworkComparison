@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.imos;
+package com.imos.rest;
 
 import java.time.LocalTime;
 import org.json.JSONObject;
@@ -17,13 +17,14 @@ import static spark.Spark.get;
 public class SparkRESTService {
 
     public static void main(String[] args) {
-
+        
         get("/rest/spark", (req, res) -> {
             JSONObject data = new JSONObject();
-            data.put("javaHome", System.getProperty("java.home"));
+            data.put("java-home", System.getProperty("java.home"));
             data.put("data", "Hello World!");
             data.put("time", LocalTime.now());
-            data.put("serviceProvider", "Spark");
+            data.put("rest-service", "Spark");
+            data.put("server", "Jetty");
             return data.toString();
         });
         get("/proxy-hello", (req, res) -> "Hello World!(Proxy) : " + LocalTime.now());
