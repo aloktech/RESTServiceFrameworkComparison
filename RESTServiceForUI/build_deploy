@@ -1,0 +1,10 @@
+clear
+mvn clean install
+docker stop ui-rest
+docker rm ui-rest
+docker rmi ui-rest
+docker build --rm --tag ui-rest . 
+docker run -it -d -p 8090:8080 --name ui-rest ui-rest
+sleep 20
+docker logs ui-rest
+curl http://192.168.1.8:8090/RESTServiceForUI/rest

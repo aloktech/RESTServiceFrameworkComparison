@@ -5,6 +5,7 @@
  */
 package com.imos.rest;
 
+import java.time.LocalTime;
 import javax.inject.Inject;
 import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
@@ -29,6 +30,14 @@ public class RESTEndPoint {
 
     @Inject
     private RESTService service;
+
+    @GET
+    public String getMsg() {
+
+        JSONObject json = new JSONObject();
+        json.put("time", LocalTime.now().toString());
+        return json.toString();
+    }
 
     @POST
     @Path("regis")

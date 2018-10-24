@@ -15,13 +15,21 @@ and open the template in the editor.
         <div style="align-content: center;text-align: center;">REST Framework time taken for 1000 requests</div>
         <canvas id="ui-chart"></canvas>
         <script>
-            var url = 'http://localhost:55440/RESTServiceForUI/rest/all';
-            fetch(new Request(url, {method: 'GET', cache: 'reload'}))
-                    .then(data => {
-                        return data.json();
+            var url = 'http://192.168.1.8:27643/RESTServiceForUI/rest/all';
+
+            var init = {
+                method: "GET",
+                mode: "cors"};
+
+            fetch(url, init)
+                    .then(response => {
+                        if (response.status === 200) {
+                            return response.json();
+                        } else {
+                            throw new Error('Something went wrong on api server!');
+                        }
                     })
                     .then(res => {
-                        console.log(res);
                         var data = res.result;
                         var size = data.length;
                         var chartDataa = [];
@@ -37,8 +45,8 @@ and open the template in the editor.
                         for (i = 0; i < size; i++) {
                             if (data[i]['server-rest-service-provider'] !== data[i]['server'])
                                 label = data[i]['server-rest-service-provider'] + ' in ' + data[i]['server'];
-                            else 
-                               label = data[i]['server-rest-service-provider'];
+                            else
+                                label = data[i]['server-rest-service-provider'];
                             if (label !== prelabel) {
                                 prelabel = label;
                                 labels[p] = label;
@@ -60,10 +68,11 @@ and open the template in the editor.
                         updateData(chart, 0, chartDataa, labels);
                         updateData(chart, 1, chartDatab, labels);
                         updateData(chart, 2, chartDatac, labels);
-                    }).catch(e => {
-                console.log(e);
-            });
-            ;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+
             var ctx = document.getElementById('ui-chart').getContext('2d');
             var chart = new Chart(ctx, {
                 // The type of chart we want to create

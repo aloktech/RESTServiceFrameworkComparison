@@ -2,12 +2,10 @@
 <Configuration status="INFO" monitorIntervals="30">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <!--<PatternLayout pattern="%-5level %d{HH:mm:ss.SSS} [%t] %logger{36} %L %M - %msg%xEx%n"/>-->
             <PatternLayout pattern="%-5level %logger{36} %L %M - %msg%xEx%n"/>
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.tavant" level="INFO"/>
         <Root level="INFO">
             <AppenderRef ref="Console"/>
         </Root>

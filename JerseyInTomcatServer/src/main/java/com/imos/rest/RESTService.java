@@ -25,7 +25,8 @@ public class RESTService {
         data.put("javaHome", System.getProperty("java.home"));
         data.put("data", "Hello World!");
         data.put("time", LocalTime.now());
-        data.put("serviceProvider", "Tomcat");
+        data.put("restService", "Jersey");
+        data.put("server", "Tomcat");
         return Response.ok().entity(data.toString()).build();
     }
 }

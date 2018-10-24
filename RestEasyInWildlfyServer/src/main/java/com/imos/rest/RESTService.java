@@ -24,7 +24,8 @@ public class RESTService {
         data.put("javaHome", System.getProperty("java.home"));
         data.put("data", "Hello World!");
         data.put("time", LocalTime.now());
-        data.put("serviceProvider", "Resteasy");
+        data.put("restService", "RestEasy");
+        data.put("server", "Wildfly");
         return data.toString();
     }
 }
