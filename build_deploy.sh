@@ -29,3 +29,6 @@ cd ..
 cd ProteusRESTServer
 build_deploy_test.sh
 cd ..
+cd JoobyRESTServer
+build_deploy_test.sh
+cd ..

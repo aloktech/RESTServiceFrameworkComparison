@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.imos.vp</groupId>
-    <artifactId>RestEasyInWildlfyServer</artifactId>
+    <artifactId>RestEasyInWildflyServer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>RestEasyInWildlfyServer</name>
+    <name>RestEasyInWildflyServer</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -39,7 +39,7 @@
     </dependencies>
 
     <build>
-        <finalName>RestEasyInWildlfyServer</finalName>
+        <finalName>RestEasyInWildflyServer</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
