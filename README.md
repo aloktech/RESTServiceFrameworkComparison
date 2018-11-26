@@ -70,3 +70,5 @@ Deployment
 - RESTServiceForUI has to deployed in Payara Micro
 - UIChart has to deployed in Tomcat
 - Other Standlone Frameworks has to be run as usual java program
+
+With reference to DZone article **Choosing a REST Framework for Microservices**(https://dzone.com/articles/choosing-rest-framework-for-microservices)

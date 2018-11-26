@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author pintu
  */
-@WebFilter("/")
+@WebFilter("/*")
 public class RESTCORSFilter implements Filter {
 
     @Override
@@ -33,7 +33,7 @@ public class RESTCORSFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         ((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
-        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Methods", "GET, OPTIONS, HEAD, POST");
+        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Methods", "GET");
 
         if (httpRequest.getMethod().equals("OPTIONS")) {
             httpResponse.setStatus(HttpServletResponse.SC_ACCEPTED);

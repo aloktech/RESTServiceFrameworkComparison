@@ -1,4 +1,3 @@
-cls
 call mvn clean install
 timeout 2 /nobreak
 call docker stop ui

@@ -7,7 +7,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>ClientServiceProvider</module>
-        <module>HttpClientJDK11</module>
+<!--        <module>HttpClientJDK11</module>-->
         <module>OKHttpClient</module>
         <module>UniRESTClient</module>
         <module>JerseyRESTClient</module>
@@ -21,6 +21,7 @@
         <module>JerseyInPayaraServer</module>
         <module>RESTServiceForUI</module>
         <module>UIChart</module>
+        <module>JoobyRESTServer</module>
         <module>Deployment</module>
     </modules>
     <properties>
