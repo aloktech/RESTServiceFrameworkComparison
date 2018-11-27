@@ -5,6 +5,7 @@
  */
 package com.imos;
 
+import com.google.auto.service.AutoService;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -15,6 +16,7 @@ import javax.ws.rs.core.Response;
  *
  * @author pintu
  */
+@AutoService(ClientServiceProvider.class)
 public class JerseyClient implements ClientServiceProvider {
 
     private Client jerseyClient;

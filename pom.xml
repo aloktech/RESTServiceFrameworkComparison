@@ -7,6 +7,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>ClientServiceProvider</module>
+<!--        <module>HttpClientJDK11</module>-->
         <module>OKHttpClient</module>
         <module>UniRESTClient</module>
         <module>JerseyRESTClient</module>
@@ -21,6 +22,7 @@
         <module>RESTServiceForUI</module>
         <module>UIChart</module>
         <module>JoobyRESTServer</module>
+        <module>Deployment</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

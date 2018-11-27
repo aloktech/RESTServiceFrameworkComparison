@@ -5,12 +5,14 @@
  */
 package com.imos;
 
+import com.google.auto.service.AutoService;
 import com.mashape.unirest.http.Unirest;
 
 /**
  *
  * @author pintu
  */
+@AutoService(ClientServiceProvider.class)
 public class UniRESTClient implements ClientServiceProvider {
 
     @Override

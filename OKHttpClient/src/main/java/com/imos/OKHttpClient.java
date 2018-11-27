@@ -5,6 +5,7 @@
  */
 package com.imos;
 
+import com.google.auto.service.AutoService;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -14,6 +15,7 @@ import okhttp3.ResponseBody;
  *
  * @author pintu
  */
+@AutoService(ClientServiceProvider.class)
 public class OKHttpClient implements ClientServiceProvider {
 
     private OkHttpClient client = new OkHttpClient();
