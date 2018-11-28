@@ -35,7 +35,7 @@ For the client side REST services, the Frameworks that I have used are Jersey Cl
 
 Any number REST Client service can be integrated by implementing the Service Provider Interface(SPI).
 
-SPI for REST Client :
+SPI(Service Provider Interface) for REST Client :
 ---------------------
 ```java
 public interface ClientServiceProvider {    
@@ -50,7 +50,7 @@ The file `META-INF/services/com.imos.ClientServiceProvider` must be added and ed
 as follows :
 
 <full class name, which has implement the interface> i.e com.imos.JerseyClient(JerseyClient implement the interface ClientServiceProvider)
-
+- The above configuration can be automated by using Google Auto Value
 
 REST Signature for REST Server adding/removing
 -------
@@ -65,7 +65,7 @@ The signature for POST and DELETE :
 ```json
 {
     "services": [{
-            "url_get": "http://localhost:27643/JerseyInPayara/hello/jersey",
+            "base_url": "http://192.168.1.8:8080/JerseyInPayara/hello/jersey",
             "rest_service": "Jersey",
             "server": "Payara 5"
         }
@@ -95,5 +95,7 @@ Deployment
 - RESTServiceForUI has to deployed in Payara Micro
 - UIChart has to deployed in Tomcat
 - Other Standalone Frameworks has to be run as usual java program
+
+The complete build and deployment are automated by using docker and script files.
 
 With reference to DZone article **Choosing a REST Framework for Microservices**(https://dzone.com/articles/choosing-rest-framework-for-microservices)
