@@ -5,7 +5,7 @@
  */
 package com.imos.rest;
 
-import com.owlike.genson.annotation.JsonProperty;
+import com.alibaba.fastjson.annotation.JSONField;
 import java.io.Serializable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,10 +24,12 @@ public class ServiceInfo implements Serializable {
 
     private static final long serialVersionUID = -4987670015611231250L;
 
-    @JsonProperty("server")
+    @JSONField(name = "server")
     private String serverName;
-    @JsonProperty("rest_service")
+
+    @JSONField(name = "rest_service")
     private String restServiceName;
-    @JsonProperty("url_get")
+
+    @JSONField(name = "base_url")
     private String urlGET;
 }

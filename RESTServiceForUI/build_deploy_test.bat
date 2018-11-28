@@ -8,7 +8,7 @@ call docker rmi ui-rest
 timeout 2 /nobreak
 call docker build --rm --tag ui-rest .
 timeout 2 /nobreak
-call docker run --rm -it -d -p 8091:8080 --name ui-rest ui-rest
+call docker run --rm -it -d -p 8091:8080 --name ui-rest --network rest-net ui-rest
 timeout 40 /nobreak
 curl http://localhost:8091/RESTServiceForUI/rest
 timeout 2 /nobreak

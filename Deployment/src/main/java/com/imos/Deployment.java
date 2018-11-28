@@ -25,14 +25,18 @@ import java.nio.file.Paths;
 public class Deployment {
 
     public static void main(String[] args) throws IOException, URISyntaxException, InterruptedException {
-        String data = Files.readString(Paths.get(Deployment.class.getClassLoader().getResource("default.json").toURI()));
+//        String data = Files.readString(Paths.get(System.getProperty("user.dir")+"/"+Deployment.class.getClassLoader().getResource("default.json").toURI()));
+        String data = Files.readString(Paths.get(System.getProperty("user.dir")+"/default.json"));
         InetAddress addr = Inet4Address.getLocalHost();
-        data = data.replaceAll("\\$\\{hostname\\}", addr.getHostAddress());
-//        System.out.println(data);
+//        data = data.replaceAll("\\$\\{hostname\\}", addr.getHostAddress());
+        data = data.replaceAll("\\$\\{hostname\\}", "localhost");
+        System.out.println(data);
         HttpClient httpClient = HttpClient.newBuilder()
                 .build();
         String deleteUrl = "http://${hostname}:8091/RESTServiceForUI/rest/deregisall";
-        deleteUrl = deleteUrl.replaceAll("\\$\\{hostname\\}", addr.getHostAddress());
+//        deleteUrl = deleteUrl.replaceAll("\\$\\{hostname\\}", addr.getHostAddress());
+        deleteUrl = deleteUrl.replaceAll("\\$\\{hostname\\}", "localhost");
+        System.out.println(deleteUrl);
         HttpRequest deleteRequest = HttpRequest.newBuilder()
                 .uri(URI.create(deleteUrl))
                 .header("Content-Type", "application/json")
@@ -42,7 +46,9 @@ public class Deployment {
         System.out.println(response.body());
         
         String registrationUrl = "http://${hostname}:8091/RESTServiceForUI/rest/regis";
-        registrationUrl = registrationUrl.replaceAll("\\$\\{hostname\\}", addr.getHostAddress());
+//        registrationUrl = registrationUrl.replaceAll("\\$\\{hostname\\}", addr.getHostAddress());
+        registrationUrl = registrationUrl.replaceAll("\\$\\{hostname\\}", "localhost");
+        System.out.println(registrationUrl);
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(URI.create(registrationUrl))
                 .header("Content-Type", "application/json")

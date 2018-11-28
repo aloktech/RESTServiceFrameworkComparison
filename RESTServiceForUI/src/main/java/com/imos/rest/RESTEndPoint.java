@@ -37,6 +37,15 @@ public class RESTEndPoint {
         json.put("time", LocalTime.now().toString());
         return json.toString();
     }
+    
+    @Path("services")
+    @GET
+    public String getServiceList() {
+        JSONObject json = new JSONObject();
+        json.put("services", service.getAllServices());
+        json.put("time", LocalTime.now().toString());
+        return json.toString();
+    }
 
     @POST
     @Path("regis")
@@ -65,15 +74,13 @@ public class RESTEndPoint {
     @GET
     public String getDataByIterration(@PathParam("iteration") int iteration) {
 
-        JsonObject json = service.getDataByIterration(iteration);
-        return json.toString();
+        return service.getDataByIteration(iteration).toString();
     }
 
     @Path("all")
     @GET
     public String getData() {
 
-        JSONObject json = service.getAllData();
-        return json.toString();
+        return service.getAllData().toString();
     }
 }

@@ -1,4 +1,6 @@
 call mvn clean
+docker network rm rest-net
+docker network create --driver bridge rest-net
 cd UIChart
 call build_deploy_test.bat
 cd ..
@@ -32,13 +34,3 @@ cd ..
 cd Deployment
 call build_deploy_test.bat
 cd..
-curl -i  -H 'Accepted : application/json' http://localhost:8091/RESTServiceForUI/rest/
-curl -i  -H 'Accepted : application/json' http://localhost:8092/JerseyInPayaraServer/rest/jersey
-curl -i  -H 'Accepted : application/json' http://localhost:8093/JerseyInTomcatServer/rest/jersey
-curl -i  -H 'Accepted : application/json' http://localhost:8094/RestEasyInWildlfyServer/rest/resteasy
-curl -i  -H 'Accepted : application/json' http://localhost:8095/rest/spark
-curl -i  -H 'Accepted : application/json' http://localhost:8096/rest/javalin
-curl -i  -H 'Accepted : application/json' http://localhost:8097/rest/springboot
-curl -i  -H 'Accepted : application/json' http://localhost:8098/v1/rest/proteus
-curl -i  -H 'Accepted : application/json' http://localhost:8099/rest/helidon
-start chrome http://localhost:8090/UIChart/

@@ -18,4 +18,4 @@ call docker rmi rest.deploy
 timeout 2 /nobreak
 call docker build --rm --tag rest.deploy .
 timeout 2 /nobreak
-call docker run -it -d --name rest.deploy rest.deploy
+call docker run -it -d --name rest.deploy --network rest-net rest.deploy

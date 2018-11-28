@@ -44,7 +44,7 @@ public class RESTServiceCache {
         return SERVICES;
     }
 
-    @Schedule(second = "*", minute = "1")
+    @Schedule(second = "*", minute = "1", hour = "*")
     public void checkRESTstatus() {
         System.out.println(LocalTime.now());
     }

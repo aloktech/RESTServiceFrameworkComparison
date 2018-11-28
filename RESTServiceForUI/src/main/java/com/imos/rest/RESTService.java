@@ -5,7 +5,7 @@
  */
 package com.imos.rest;
 
-import com.owlike.genson.Genson;
+import com.alibaba.fastjson.JSON;
 import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Objects;
@@ -28,18 +28,28 @@ public class RESTService {
 
     private JSONArray data = new JSONArray();
 
-    private final Genson genson = new Genson();
-
     @Inject
     private RESTServiceCache cache;
 
-    public JSONObject registration(String data1) throws JSONException {
-        JSONObject json = new JSONObject(data1);
+    public JSONArray getAllServices() throws JSONException {
+        JSONArray array = new JSONArray();
+        cache.getAllActiveServices()
+                .forEach(s -> {
+                    JSONObject service = new JSONObject();
+                    service.put("server", s.getServerName());
+                    service.put("rest-service", s.getRestServiceName());
+                    array.put(service);
+                });
+        return array;
+    }
+
+    public JSONObject registration(String data) throws JSONException {
+        JSONObject json = new JSONObject(data);
         JSONArray array = json.getJSONArray("services");
         array.forEach(s -> {
-            cache.addService(genson.deserialize(s.toString(), ServiceInfo.class));
+            cache.addService(JSON.parseObject(s.toString(), ServiceInfo.class));
         });
-        json = new JSONObject(data1);
+        json = new JSONObject(data);
         json.put("msg", array.length() + " services are added");
         return json;
     }
@@ -47,19 +57,19 @@ public class RESTService {
     public void deregistrationOfAll() throws JSONException {
         cache.getAllActiveServices().clear();
     }
-    
+
     public JSONObject deregistration(String data1) throws JSONException {
         JSONObject json = new JSONObject(data1);
         JSONArray array = json.getJSONArray("services");
         array.forEach(s -> {
-            cache.removeService(genson.deserialize(s.toString(), ServiceInfo.class));
+            cache.removeService(JSON.parseObject(s.toString(), ServiceInfo.class));
         });
         json = new JSONObject(data1);
         json.put("msg", array.length() + " services are removed");
         return json;
     }
 
-    public JsonObject getDataByIterration(int iteration) {
+    public JsonObject getDataByIteration(int iteration) {
 
         data = new JSONArray();
         cache.getAllActiveServices().stream().forEach(s -> {
@@ -77,9 +87,11 @@ public class RESTService {
 
         data = new JSONArray();
 
-        cache.getAllActiveServices().stream().forEach(s -> {
-            execute(1000, s);
-        });
+        cache.getAllActiveServices()
+                .stream()
+                .forEach(s -> {
+                    execute(1000, s);
+                });
 
         JSONObject json = new JSONObject();
         json.put("time", LocalTime.now().toString());
@@ -88,19 +100,21 @@ public class RESTService {
     }
 
     private void execute(int iteration, ServiceInfo info) {
-        cache.getService().getLoader().forEach(s -> {
-            String url = info.getUrlGET();
-            try {
-                s.config();
-                String d = s.execute(url);
-                checkDataValidity(d);
-                data = timeDiff(data, info.getServerName(), s.getClientServiceName(), info.getRestServiceName(),
-                        url, Unchecked.function(u -> s.execute(u)), iteration);
-                s.close();
-            } catch (Exception e) {
-                log.error("Failed for url : '{}' caused by {}", url, e.getMessage());
-            }
-        });
+        cache.getService()
+                .getLoader()
+                .forEach(s -> {
+                    String url = info.getUrlGET();
+                    try {
+                        s.config();
+                        String d = s.execute(url);
+                        checkDataValidity(d);
+                        data = timeDiff(data, info.getServerName(), s.getClientServiceName(), info.getRestServiceName(),
+                                url, Unchecked.function(u -> s.execute(u)), iteration);
+                        s.close();
+                    } catch (Exception e) {
+                        log.error("On Service {}, Failed for url : '{}' caused by {}", info.getRestServiceName(), url, e.getMessage());
+                    }
+                });
     }
 
     private void checkDataValidity(String data) {

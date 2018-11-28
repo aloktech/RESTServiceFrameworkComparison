@@ -8,6 +8,6 @@ call docker rmi rest.proteus
 timeout 2 /nobreak
 call docker build --rm --tag rest.proteus .
 timeout 2 /nobreak
-call docker run -it -d -p 8098:8090 --name rest.proteus rest.proteus
+call docker run -it -d -p 8098:8090 --name rest.proteus --network rest-net rest.proteus
 timeout 30 /nobreak
 curl http://localhost:8098/v1/rest/proteus

@@ -78,7 +78,7 @@ and open the template in the editor.
                         updateData(chart, 0, chartDataa, labels);
                         updateData(chart, 1, chartDatab, labels);
                         updateData(chart, 2, chartDatac, labels);
-                        updateData(chart, 3, chartDatac, labels);
+                        updateData(chart, 3, chartDatad, labels);
                     })
                     .catch(e => {
                         console.log(e);
@@ -93,7 +93,7 @@ and open the template in the editor.
                 data: {
                     datasets: [{
                             label: "OKHTTP Client",
-                            backgroundColor: 'rgb(255, 99, 0)',
+                            backgroundColor: 'rgb(0, 0, 255)',
                             borderColor: 'rgb(0, 0, 0)',
                             data: []
                         }, {
@@ -103,11 +103,6 @@ and open the template in the editor.
                             data: []
                         }, {
                             label: "Unirest Client",
-                            backgroundColor: 'rgb(155, 99, 0)',
-                            borderColor: 'rgb(0, 0, 0)',
-                            data: []
-                        }, {
-                            label: "HttpClient JDK 11",
                             backgroundColor: 'rgb(105, 99, 0)',
                             borderColor: 'rgb(0, 0, 0)',
                             data: []

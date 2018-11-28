@@ -8,6 +8,6 @@ call docker rmi rest.javalin
 timeout 2 /nobreak
 call docker build --rm --tag rest.javalin .
 timeout 2 /nobreak
-call docker run -it -d -p 8096:7000 --name rest.javalin rest.javalin
+call docker run -it -d -p 8096:7000 --name rest.javalin --network rest-net rest.javalin
 timeout 30 /nobreak
 curl http://localhost:8096/rest/javalin

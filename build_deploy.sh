@@ -1,4 +1,6 @@
 mvn clean
+docker network rm rest-net
+docker network create --driver bridge rest-net
 cd UIChart
 build_deploy_test.sh
 cd ..

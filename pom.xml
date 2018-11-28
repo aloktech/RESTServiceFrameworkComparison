@@ -6,23 +6,29 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
+        
         <module>ClientServiceProvider</module>
+        <!--REST Client-->
 <!--        <module>HttpClientJDK11</module>-->
         <module>OKHttpClient</module>
         <module>UniRESTClient</module>
         <module>JerseyRESTClient</module>
+        <!--REST Server-->
         <module>SparkRESTServer</module>
         <module>JavalinRESTServer</module>
         <module>SpringBootRESTServer</module>
         <module>ProteusRESTServer</module>
         <module>HelidonRESTServer</module>
-        <module>JerseyInTomcatServer</module>
         <module>RestEasyInWildflyServer</module>
         <module>JerseyInPayaraServer</module>
-        <module>RESTServiceForUI</module>
-        <module>UIChart</module>
+        <module>JerseyInTomcatServer</module>
         <module>JoobyRESTServer</module>
-        <module>Deployment</module>
+        <!--REST Controller for UI-->
+        <module>RESTServiceForUI</module>
+        <!--UI-->
+        <module>UIChart</module>
+        
+        <!--<module>Deployment</module>-->
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
