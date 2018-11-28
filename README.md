@@ -1,15 +1,41 @@
-# REST Service Frameworks Comparison
-For microservices, we need Microservice Framework/ REST services. But how to know, what to select.
+# Microservices/REST Service Frameworks Comparison
+For microservices, we need Microservice Framework/REST services. But how to know, what to select.
 So, we may have to compare Microservice Framework results and see which one performs better.
 
 The Framework that are used for server side REST services are Jersey and RestEasy. 
-And the standalone REST Framework services are Spring Boot, Spark Java, Javalin, Proteus and Helidon. 
-For the client side REST services, the Frameworks that I have used are Jersey Client, OkHTTP and UniRest.
+And the standalone REST Framework services are Spring Boot, Spark Java, Javalin, Proteus, Jooby and Helidon. 
+For the client side REST services, the Frameworks that I have used are Jersey Client, OkHTTP, UniRest and HttpClientJDK 11.
+
+**Service Provider**
+- ClientServiceProvider
+
+**REST Client**
+- HttpClientJDK11
+- OKHttpClient
+- UniRESTClient
+- JerseyRESTClient
+
+**REST Server**
+- SparkRESTServer
+- JavalinRESTServer
+- SpringBootRESTServer
+- ProteusRESTServer
+- HelidonRESTServer
+- RestEasyInWildflyServer
+- JerseyInPayaraServer
+- JerseyInTomcatServer
+- JoobyRESTServer
+
+**REST Controller for UI**
+- RESTServiceForUI
+
+**UI**
+- UIChart
 
 
 Any number REST Client service can be integrated by implementing the Service Provider Interface(SPI).
 
-SPI for REST Client :
+SPI(Service Provider Interface) for REST Client :
 ---------------------
 ```java
 public interface ClientServiceProvider {    
@@ -24,8 +50,7 @@ The file `META-INF/services/com.imos.ClientServiceProvider` must be added and ed
 as follows :
 
 <full class name, which has implement the interface> i.e com.imos.JerseyClient(JerseyClient implement the interface ClientServiceProvider)
-
-
+- The above configuration can be automated by using Google Auto Value
 
 REST Signature for REST Server adding/removing
 -------
@@ -40,13 +65,13 @@ The signature for POST and DELETE :
 ```json
 {
     "services": [{
-            "url_get": "http://localhost:27643/JerseyInPayara/hello/jersey",
+            "base_url": "http://192.168.1.8:8080/JerseyInPayara/hello/jersey",
             "rest_service": "Jersey",
             "server": "Payara 5"
         }
+    ]
 }
 ```
-
 
 Data for UI
 -----------
@@ -69,6 +94,8 @@ Deployment
 - JerseyInTomcatServer has to deployed in Tomcat
 - RESTServiceForUI has to deployed in Payara Micro
 - UIChart has to deployed in Tomcat
-- Other Standlone Frameworks has to be run as usual java program
+- Other Standalone Frameworks has to be run as usual java program
+
+The complete build and deployment are automated by using docker and script files.
 
 With reference to DZone article **Choosing a REST Framework for Microservices**(https://dzone.com/articles/choosing-rest-framework-for-microservices)
