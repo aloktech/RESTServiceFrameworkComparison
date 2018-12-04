@@ -22,3 +22,5 @@
 /JoobyRESTServer/target/
 >>>>>>> b76f42873f36858f1db1ebb15767a8ea10252ec2
 /HttpClientJDK11/target/
+/OKHttpRESTClient/target/
+/SpringRESTClient/target/

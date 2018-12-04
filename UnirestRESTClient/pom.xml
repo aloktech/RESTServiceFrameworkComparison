@@ -6,7 +6,7 @@
         <artifactId>RESTServiceFrameworkComparison</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>UniRESTClient</artifactId>
+    <artifactId>UnirestRESTClient</artifactId>
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -30,4 +30,17 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+<!--                <configuration>
+                    <release>11</release>
+                </configuration>-->
+            </plugin>
+        </plugins>
+    </build>
+    <name>UnirestRESTClient</name>
 </project>

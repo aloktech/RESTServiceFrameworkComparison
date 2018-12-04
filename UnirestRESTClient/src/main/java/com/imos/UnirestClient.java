@@ -13,7 +13,7 @@ import com.mashape.unirest.http.Unirest;
  * @author pintu
  */
 @AutoService(ClientServiceProvider.class)
-public class UniRESTClient implements ClientServiceProvider {
+public class UnirestClient implements ClientServiceProvider {
 
     @Override
     public String execute(String url) throws Exception {

@@ -1,6 +1,6 @@
 set JAVA_HOME=E:\Tools\Java\jdk-11
 set MAVEN_HOME=E:\Tools\apache-maven-3.6.0
-set PATH=%JAVA_HOME%\bin;%MAVEN_HOME%\bin
+set PATH=%JAVA_HOME%\bin;%MAVEN_HOME%\bin;%PATH%
 
 echo %JAVA_HOME%
 echo %MAVEN_HOME%

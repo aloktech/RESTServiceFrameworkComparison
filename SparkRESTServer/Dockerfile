@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:11
 WORKDIR /
 CMD ["mkdir", "lib"]
 ADD target/SparkRESTServer.jar SparkRESTServer.jar

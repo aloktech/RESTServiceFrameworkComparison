@@ -6,29 +6,35 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        
+        <!--Service Provider Interface-->
         <module>ClientServiceProvider</module>
+        
         <!--REST Client-->
-<!--        <module>HttpClientJDK11</module>-->
-        <module>OKHttpClient</module>
-        <module>UniRESTClient</module>
+        <module>OKHttpRESTClient</module>
+        <module>UnirestRESTClient</module>
         <module>JerseyRESTClient</module>
+        <module>SpringRESTClient</module>
+        <!--        <module>HttpClientJDK11</module>-->
+        
+        
         <!--REST Server-->
+        <module>RestEasyInWildflyServer</module>
+        <module>JerseyInPayaraServer</module>
+        <module>JerseyInTomcatServer</module>
+        
+        <!--REST Standalone Server-->
         <module>SparkRESTServer</module>
         <module>JavalinRESTServer</module>
         <module>SpringBootRESTServer</module>
         <module>ProteusRESTServer</module>
         <module>HelidonRESTServer</module>
-        <module>RestEasyInWildflyServer</module>
-        <module>JerseyInPayaraServer</module>
-        <module>JerseyInTomcatServer</module>
-        <module>JoobyRESTServer</module>
+        <!--<module>JoobyRESTServer</module>-->
+        
         <!--REST Controller for UI-->
         <module>RESTServiceForUI</module>
+        
         <!--UI-->
         <module>UIChart</module>
-        
-        <!--<module>Deployment</module>-->
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -37,7 +43,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.2</version>
+            <version>1.18.4</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>

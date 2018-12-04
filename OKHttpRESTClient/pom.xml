@@ -6,7 +6,7 @@
         <artifactId>RESTServiceFrameworkComparison</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>OKHttpClient</artifactId>
+    <artifactId>OKHttpRESTClient</artifactId>
     <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>3.11.0</version>
+            <version>3.12.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.auto.service</groupId>
@@ -30,4 +30,17 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+<!--                <configuration>
+                    <release>11</release>
+                </configuration>-->
+            </plugin>
+        </plugins>
+    </build>
+    <name>OKHttpRESTClient</name>
 </project>

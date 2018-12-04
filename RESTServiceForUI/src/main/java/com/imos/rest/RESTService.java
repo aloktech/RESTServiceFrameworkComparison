@@ -110,9 +110,10 @@ public class RESTService {
                         checkDataValidity(d);
                         data = timeDiff(data, info.getServerName(), s.getClientServiceName(), info.getRestServiceName(),
                                 url, Unchecked.function(u -> s.execute(u)), iteration);
-                        s.close();
                     } catch (Exception e) {
                         log.error("On Service {}, Failed for url : '{}' caused by {}", info.getRestServiceName(), url, e.getMessage());
+                    } finally {
+                        s.close();
                     }
                 });
     }

@@ -7,7 +7,6 @@ package com.imos.rest;
 
 import java.time.LocalTime;
 import javax.inject.Inject;
-import javax.json.JsonObject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;

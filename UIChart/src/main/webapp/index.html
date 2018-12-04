@@ -70,7 +70,7 @@ and open the template in the editor.
                             } else if ('UniRest Client' === client) {
                                 chartDatac[index[2]] = val;
                                 index[2]++;
-                            } else if ('HttpClient_JDK11' === client) {
+                            } else if ('Spring Client' === client) {
                                 chartDatad[index[3]] = val;
                                 index[3]++;
                             }
@@ -104,6 +104,11 @@ and open the template in the editor.
                         }, {
                             label: "Unirest Client",
                             backgroundColor: 'rgb(105, 99, 0)',
+                            borderColor: 'rgb(0, 0, 0)',
+                            data: []
+                        }, {
+                            label: "Spring Client",
+                            backgroundColor: 'rgb(5, 99, 0)',
                             borderColor: 'rgb(0, 0, 0)',
                             data: []
                         }]

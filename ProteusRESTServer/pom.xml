@@ -16,7 +16,7 @@
         <dependency>
             <groupId>io.sinistral</groupId>
             <artifactId>proteus-core</artifactId>
-            <version>0.3.3</version>
+            <version>0.3.5</version>
         </dependency>
     </dependencies>
     <build>
@@ -26,6 +26,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
