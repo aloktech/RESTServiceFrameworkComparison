@@ -24,3 +24,5 @@
 /HttpClientJDK11/target/
 /OKHttpRESTClient/target/
 /SpringRESTClient/target/
+/UnirestRESTClient/target/
+/VertxRESTServer/target/
