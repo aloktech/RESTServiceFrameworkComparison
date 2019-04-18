@@ -1,0 +1,12 @@
+VertxRESTServer.jar -> java.base
+VertxRESTServer.jar -> not found
+   com.imos.rest                                      -> io.vertx.core                                      not found
+   com.imos.rest                                      -> io.vertx.core.http                                 not found
+   com.imos.rest                                      -> io.vertx.core.json                                 not found
+   com.imos.rest                                      -> io.vertx.ext.web                                   not found
+   com.imos.rest                                      -> java.io                                            java.base
+   com.imos.rest                                      -> java.lang                                          java.base
+   com.imos.rest                                      -> java.lang.invoke                                   java.base
+   com.imos.rest                                      -> java.time                                          java.base
+   com.imos.rest                                      -> java.time.format                                   java.base
+   com.imos.rest                                      -> java.util.function                                 java.base

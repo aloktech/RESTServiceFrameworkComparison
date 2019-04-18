@@ -1,0 +1,2 @@
+JAVA_VERSION="12"
+MODULES="java.base java.logging"

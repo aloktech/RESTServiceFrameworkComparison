@@ -6,44 +6,29 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <!--Service Provider Interface-->
-        <module>ClientServiceProvider</module>
+        <module>RESTCore</module>
+        <!-- Others -->
+        <!--<module>UpdateClient</module>-->
         
         <!--REST Client-->
-        <module>OKHttpRESTClient</module>
-        <module>UnirestRESTClient</module>
-        <module>JerseyRESTClient</module>
-        <module>SpringRESTClient</module>
-        <!--        <module>HttpClientJDK11</module>-->
-        
+        <module>RESTClient</module>
         
         <!--REST Server-->
-        <module>RestEasyInWildflyServer</module>
-        <module>JerseyInPayaraServer</module>
-        <module>JerseyInTomcatServer</module>
-        
-        <!--REST Standalone Server-->
-        <module>SparkRESTServer</module>
-        <module>JavalinRESTServer</module>
-        <module>SpringBootRESTServer</module>
-        <module>ProteusRESTServer</module>
-        <module>HelidonRESTServer</module>
-        <!--<module>JoobyRESTServer</module>-->
-        
-        <!--REST Controller for UI-->
-        <module>RESTServiceForUI</module>
+        <module>RESTServer</module>
         
         <!--UI-->
-        <module>UIChart</module>
+        <module>RESTUI</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
+            <version>1.18.6</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>

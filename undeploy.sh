@@ -10,4 +10,6 @@ docker stop rest.spark
 docker stop rest.helidon
 docker stop rest.springboot
 docker stop rest.proteus
-docker ps -n 20
+docker stop rest.nodejs
+docker stop rest.vertx
+docker ps -a
