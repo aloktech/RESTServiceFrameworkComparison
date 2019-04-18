@@ -17,8 +17,8 @@
         <module>ProteusRESTServer</module>
         <module>RestEasyInWildflyServer</module>
         <module>SparkRESTServer</module>
-        <module>SpringBootRESTServer</module>
         <module>JavalinRESTServer</module>
+        <module>SpringBootRESTServer</module>
         <module>VertxRESTServer</module>
     </modules>
     <properties>

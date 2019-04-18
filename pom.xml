@@ -7,8 +7,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>RESTCore</module>
-        <!-- Others -->
-        <!--<module>UpdateClient</module>-->
         
         <!--REST Client-->
         <module>RESTClient</module>
