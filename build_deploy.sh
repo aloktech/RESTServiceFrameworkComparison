@@ -74,6 +74,10 @@ cd RESTServer/NodeJSRESTServer/
 ./build_deploy_test.sh
 sleep 10
 cd ../..
+cd RESTServer/VertxRESTServer/
+./build_deploy_test.sh
+sleep 10
+cd ../..
 cd RESTUI/RESTServiceForUI/
 ./build_deploy_test.sh
 sleep 10
