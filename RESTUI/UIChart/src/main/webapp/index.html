@@ -15,6 +15,7 @@ and open the template in the editor.
         <div style="align-content: center;text-align: center;">REST Framework time taken for 1000 requests</div>
         <canvas id="ui-chart"></canvas>
         <script>
+
             var url = 'http://localhost:8091/rest/all';
 
             var init = {
@@ -26,9 +27,9 @@ and open the template in the editor.
                         if (response.status === 200) {
                             return response.json();
                         } else {
-                            console.log('status: '+response.status);
-                            console.log('type: '+response.type);
-                            console.log('response: '+response);
+                            console.log('status: ' + response.status);
+                            console.log('type: ' + response.type);
+                            console.log('response: ' + response);
                             throw new Error('Something went wrong on api server!');
                         }
                     })
@@ -52,11 +53,11 @@ and open the template in the editor.
                                 continue;
                             }
                             if (data[i]['server-rest-service-provider'] !== data[i]['server']) {
-                                 label = data[i]['server-rest-service-provider'] + ' in ' + data[i]['server'];
+                                label = data[i]['server-rest-service-provider'] + ' in ' + data[i]['server'];
                             } else {
                                 label = data[i]['server-rest-service-provider'];
                             }
-                                
+
                             if (label !== prelabel) {
                                 prelabel = label;
                                 labels[p] = label;
@@ -150,6 +151,8 @@ and open the template in the editor.
                 chart.data.datasets[index].data = data;
                 chart.update();
             }
+
+
         </script>
     </body>
 </html>

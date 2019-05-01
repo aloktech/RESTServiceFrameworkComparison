@@ -15,6 +15,6 @@ const server = http.createServer((req, res) => {
   res.end(JSON.stringify(result));
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(hostname, port, () => {
+	console.log(`Server running at http://${hostname}:${port}/`);
 });
