@@ -3,8 +3,8 @@ For microservices, we need Microservice Framework/REST services. But how to know
 So, we may have to compare Microservice Framework results and see which one performs better.
 
 The Framework that are used for server side REST services are Jersey and RestEasy. 
-And the standalone REST Framework services are Spring Boot, Spark Java, Javalin, Proteus, Jooby and Helidon. 
-For the client side REST services, the Frameworks that I have used are Jersey Client, OkHTTP, Unirest, Spring and HttpClientJDK 11.
+And the standalone REST Framework services are Spring Boot, Spark Java, Javalin, Jooby, Helidon, Quarkus and Micronaut. 
+For the client side REST services, the Frameworks that I have used are Jersey Client, OkHTTP, Unirest, and Spring.
 
 **Service Provider**
 - ClientServiceProvider
