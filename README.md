@@ -10,7 +10,6 @@ For the client side REST services, the Frameworks that I have used are Jersey Cl
 - ClientServiceProvider
 
 **REST Client**
-- HttpClientJDK11
 - OKHttpClient
 - UniRESTClient
 - JerseyRESTClient
@@ -20,13 +19,15 @@ For the client side REST services, the Frameworks that I have used are Jersey Cl
 - SparkRESTServer
 - JavalinRESTServer
 - SpringBootRESTServer
-- ProteusRESTServer
 - HelidonRESTServer
 - RestEasyInWildflyServer
-- JerseyInPayaraServer
+- JerseyInMicroPayaraServer
 - JerseyInTomcatServer
 - JoobyRESTServer
 - VertxRESTServer
+- MicronautServer
+- QuarkusServer
+- NodeJSServer*
 
 **REST Controller for UI**
 - RESTServiceForUI
