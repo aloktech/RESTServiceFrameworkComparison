@@ -1,3 +1,5 @@
+mvn clean install
+sleep  2
 docker stop rest.spark
 sleep 2
 docker rm rest.spark

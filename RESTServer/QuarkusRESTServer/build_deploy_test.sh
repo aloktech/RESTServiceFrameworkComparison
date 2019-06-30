@@ -1,4 +1,5 @@
-clear
+mvn clean install
+sleep  2
 docker stop rest.quarkus
 sleep 2
 docker rm rest.quarkus

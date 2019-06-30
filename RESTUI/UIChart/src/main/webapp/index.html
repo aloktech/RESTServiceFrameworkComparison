@@ -30,6 +30,7 @@ and open the template in the editor.
                             console.log('status: ' + response.status);
                             console.log('type: ' + response.type);
                             console.log('response: ' + response);
+                            console.log('json: ' + response.json());
                             throw new Error('Something went wrong on api server!');
                         }
                     })
@@ -112,7 +113,7 @@ and open the template in the editor.
                             data: []
                         }, {
                             label: "Spring Client",
-                            backgroundColor: 'rgb(5, 99, 0)',
+                            backgroundColor: 'rgb(153, 50, 204)',
                             borderColor: 'rgb(0, 0, 0)',
                             data: []
                         }]

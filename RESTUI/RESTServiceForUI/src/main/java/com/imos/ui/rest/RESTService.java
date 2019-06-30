@@ -9,9 +9,10 @@ import com.alibaba.fastjson.JSON;
 import com.imos.ClientServiceProvider;
 import java.io.Serializable;
 import java.time.LocalTime;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -162,15 +163,16 @@ public class RESTService implements Serializable {
             count = iteration == 0 ? 1000 : iteration;
             result.put("start-time", System.nanoTime());
             long begin = System.nanoTime();
-            long[] times = new long[count];
-            for (int i = 0; i < count; i++) {
-                long startTime = System.nanoTime();
-                func.apply(url);
-                times[i] = System.nanoTime() - startTime;
-            }
+            double diffAvg = IntStream.range(0, count)
+                    .parallel()
+                    .mapToObj(index -> {
+                        long startTime = System.nanoTime();
+                        func.apply(url);
+                        return (System.nanoTime() - startTime);
+                    })
+                    .collect(Collectors.averagingLong(Long::longValue));
             long end = System.nanoTime();
             result.put("end-time", System.nanoTime());
-            double diffAvg = Arrays.stream(times).average().getAsDouble();
             result.put("diff-time", end - begin);
             result.put("avg-diff-time", diffAvg);
             result.put("iteration", count);

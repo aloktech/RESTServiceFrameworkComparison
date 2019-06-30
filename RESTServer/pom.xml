@@ -10,18 +10,18 @@
     <artifactId>RESTServer</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>HelidonRESTServer</module>
         <module>JerseyInPayaraServer</module>
         <module>JerseyInTomcatServer</module>
-        <module>JoobyRESTServer</module>
-        <module>ProteusRESTServer</module>
         <module>RestEasyInWildflyServer</module>
         <module>SparkRESTServer</module>
         <module>JavalinRESTServer</module>
+        <module>JoobyRESTServer</module>
+        <module>ProteusRESTServer</module>
+        <module>HelidonRESTServer</module>
         <module>SpringBootRESTServer</module>
         <module>VertxRESTServer</module>
-        <module>MicronautRESTServer</module>
         <module>QuarkusRESTServer</module>
+        <module>MicronautRESTServer</module>
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

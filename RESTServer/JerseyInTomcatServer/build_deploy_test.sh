@@ -1,3 +1,5 @@
+mvn clean install
+sleep  2
 docker stop rest.jersey.tomcat
 docker rm rest.jersey.tomcat
 docker rmi rest.jersey.tomcat

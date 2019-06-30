@@ -9,7 +9,8 @@ docker stop rest.javalin
 docker stop rest.spark
 docker stop rest.helidon
 docker stop rest.springboot
-docker stop rest.proteus
 docker stop rest.nodejs
 docker stop rest.vertx
+docker stop rest.quarkus
+docker stop rest.micronaut
 docker ps -a

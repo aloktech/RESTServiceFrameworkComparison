@@ -1,4 +1,5 @@
-FROM amazoncorretto:8u202
+#FROM amazoncorretto:11.0.3.7.1
+FROM amazoncorretto:8u212
 WORKDIR /
 CMD ["mkdir", "lib"]
 ADD target/RESTServiceForUI.jar RESTServiceForUI.jar

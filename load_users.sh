@@ -9,5 +9,5 @@ curl -d '{"services": [
 \ {"base_url": "http://192.168.1.8:8087/rest/jooby","rest_service": "Jooby","server": "Netty"},
 \ {"base_url": "http://192.168.1.8:3000/rest/nodejs","rest_service": "NodeJS","server": "NodeJS"}, 
 \ {"base_url": "http://192.168.1.8:8086/rest/vertx","rest_service": "Vertx","server": "Netty"}, 
-\ {"base_url": "http://192.168.1.8:8088/rest/quarkus","rest_service": "Quarkus","server": "Serverless"}]}'
+\ {"base_url": "http://192.168.1.8:8088/rest/quarkus","rest_service": "Quarkus","server": "Netty"}]}'
 \ -H "Content-Type: application/json" -X POST http://192.168.1.8:8091/rest/regis

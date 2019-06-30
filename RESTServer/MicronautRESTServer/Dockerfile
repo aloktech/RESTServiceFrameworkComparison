@@ -1,5 +1,6 @@
-
-FROM java:openjdk-8u111-alpine
-RUN apk --no-cache add curl
-COPY target/libs/*-all.jar MicronautRESTServer.jar
+FROM amazoncorretto:8u202
+WORKDIR /
+CMD ["mkdir", "lib"]
+ADD target/MicronautRESTServer.jar MicronautRESTServer.jar
+ADD target/lib/*.jar lib/
 CMD java ${JAVA_OPTS} -jar MicronautRESTServer.jar

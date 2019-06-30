@@ -38,10 +38,6 @@ docker stop rest.springboot
 docker rm rest.springboot
 docker rmi rest.springboot
 
-docker stop rest.proteus
-docker rm rest.proteus
-docker rmi rest.proteus
-
 docker stop rest.nodejs
 docker rm rest.nodejs
 docker rmi rest.nodejs
@@ -50,5 +46,12 @@ docker stop rest.vertx
 docker rm rest.vertx
 docker rmi rest.vertx
 
-docker images
+docker stop rest.quarkus
+docker rm rest.quarkus
+docker rmi rest.quarkus
 
+docker stop rest.micronaut
+docker rm rest.micronaut
+docker rmi rest.micronaut
+
+docker images

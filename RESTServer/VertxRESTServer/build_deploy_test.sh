@@ -1,3 +1,5 @@
+mvn clean install
+sleep  2
 docker stop rest.vertx
 docker rm rest.vertx
 docker rmi rest.vertx

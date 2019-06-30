@@ -1,3 +1,5 @@
+mvn clean install
+sleep  2
 docker stop rest.resteasy.wildfly
 docker rm rest.resteasy.wildfly
 docker rmi rest.resteasy.wildfly

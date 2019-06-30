@@ -21,7 +21,7 @@ public class QuarkusRESTService {
                 .data("Hello World")
                 .time(LocalTime.now().toString())
                 .restService("Quarkus")
-                .server("Serverless")
+                .server("Undertow")
                 .build()
                 .stringify();
         return result;

@@ -1,3 +1,5 @@
+mvn clean install
+sleep  2
 docker stop rest.jersey.payara
 docker rm rest.jersey.payara
 docker rmi rest.jersey.payara

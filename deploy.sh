@@ -9,7 +9,7 @@ docker restart rest.javalin
 docker restart rest.spark
 docker restart rest.helidon
 docker restart rest.springboot
-docker restart rest.proteus
 docker restart rest.nodejs
 docker restart rest.vertx
+docker restart rest.micronaut
 docker ps -n 20

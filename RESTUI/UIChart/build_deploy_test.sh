@@ -1,6 +1,6 @@
-export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_162
+export JAVA_HOME=/usr/lib/jvm/corretto-8.202
 export PATH=$JAVA_HOME/bin:$PATH
-#mvn clean install
+mvn clean install
 docker stop ui
 docker rm ui
 docker rmi ui

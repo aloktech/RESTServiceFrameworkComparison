@@ -14,11 +14,11 @@
         <module>ClientServiceProvider</module>
         
         <!--REST Client-->
-        <!--<module>HttpClientJDK11</module>-->
         <module>JerseyRESTClient</module>
         <module>OKHttpRESTClient</module>
         <module>SpringRESTClient</module>
         <module>UnirestRESTClient</module>
+        <!--<module>JDK12HttpClient</module>-->
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
