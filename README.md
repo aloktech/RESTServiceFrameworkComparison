@@ -25,9 +25,9 @@ For the client side REST services, the Frameworks that I have used are Jersey Cl
 - JerseyInTomcatServer
 - JoobyRESTServer
 - VertxRESTServer
-- MicronautServer
-- QuarkusServer
-- NodeJSServer*
+- MicronautRESTServer
+- QuarkusRESTServer
+- NodeJSRESTServer
 
 **REST Controller for UI**
 - RESTServiceForUI
