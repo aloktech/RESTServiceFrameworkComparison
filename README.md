@@ -101,5 +101,5 @@ Deployment
 - Other Standalone Frameworks has to be run as usual java program
 
 The complete build and deployment are automated by using docker and script files.
-
+![Framework Comparison](docs/figure.png)<br/>
 With reference to DZone article **Choosing a REST Framework for Microservices**(https://dzone.com/articles/choosing-rest-framework-for-microservices)
