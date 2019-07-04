@@ -14,6 +14,7 @@ For the client side REST services, the Frameworks that I have used are Jersey Cl
 - UniRESTClient
 - JerseyRESTClient
 - SpringClient
+- RetrofitClient
 
 **REST Server**
 - SparkRESTServer
