@@ -31,7 +31,12 @@
             <artifactId>SpringRESTClient</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-<!--        <dependency>
+        <dependency>
+            <groupId>com.imos.client</groupId>
+            <artifactId>RetrofitRESTClient</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--        <dependency>
             <groupId>com.imos.client</groupId>
             <artifactId>JDK12HttpClient</artifactId>
             <version>1.0-SNAPSHOT</version>
@@ -84,7 +89,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-<!--                <configuration>
+                <!--                <configuration>
                     <release>12</release>
                 </configuration>-->
             </plugin>

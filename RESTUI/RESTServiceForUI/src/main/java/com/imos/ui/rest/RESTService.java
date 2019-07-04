@@ -129,18 +129,18 @@ public class RESTService implements Serializable {
                 });
     }
 
-    private void executeGetRequest(ServiceInfo info, ClientServiceProvider s, int iteration) {
+    private void executeGetRequest(ServiceInfo info, ClientServiceProvider service, int iteration) {
         String url = info.getBaseURL();
         try {
-            s.config();
-            String d = s.execute(url);
-            checkDataValidity(d);
-            data = timeDiff(data, info.getServerName(), s.getClientServiceName(), info.getRestServiceName(),
-                    url, Unchecked.function(u -> s.execute(u)), iteration);
+            service.config();
+            String strData = service.execute(url);
+            checkDataValidity(strData);
+            data = timeDiff(data, info.getServerName(), service.getClientServiceName(), info.getRestServiceName(),
+                    url, Unchecked.function(u -> service.execute(u)), iteration);
         } catch (Exception e) {
-            log.error("On Service {}, Failed for url : '{}' caused by {}", info.getRestServiceName(), url, e.getMessage());
+            log.error("On Service {}, By Client {}, Failed for url : '{}' caused by {}", info.getRestServiceName(), service.getClientServiceName(), url, e.getMessage());
         } finally {
-            s.close();
+            service.close();
         }
     }
 
@@ -149,7 +149,7 @@ public class RESTService implements Serializable {
             log.info(data);
             JSONObject json = new JSONObject(data);
             if (json.keySet().isEmpty()) {
-                throw new IllegalStateException("Empty JSON data");
+                throw new IllegalStateException("Empty JSON data: ");
             }
         } catch (JSONException e) {
             throw new IllegalStateException("Invalid data : " + e.getMessage());

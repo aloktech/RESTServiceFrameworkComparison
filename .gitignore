@@ -16,3 +16,5 @@
 /RESTServer/VertxRESTServer/target/
 /RESTServer/QuarkusRESTServer/target/
 /RESTServer/MicronautRESTServer/target/
+/RESTServer/PlayRESTServer/target/
+/RESTClient/RetrofitRESTClient/target/

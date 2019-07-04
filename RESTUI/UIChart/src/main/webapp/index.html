@@ -41,11 +41,13 @@ and open the template in the editor.
                         var chartDatab = [];
                         var chartDatac = [];
                         var chartDatad = [];
+                        var chartDatae = [];
                         var index = [];
                         index[0] = 0;
                         index[1] = 0;
                         index[2] = 0;
                         index[3] = 0;
+                        index[4] = 0;
                         var p = 0;
                         var label = '', prelabel = '';
                         var labels = [];
@@ -78,12 +80,16 @@ and open the template in the editor.
                             } else if ('Spring Client' === client) {
                                 chartDatad[index[3]] = val;
                                 index[3]++;
+                            } else if ('Retrofit Client' === client) {
+                                chartDatae[index[4]] = val;
+                                index[4]++;
                             }
                         }
                         updateData(chart, 0, chartDataa, labels);
                         updateData(chart, 1, chartDatab, labels);
                         updateData(chart, 2, chartDatac, labels);
                         updateData(chart, 3, chartDatad, labels);
+                        updateData(chart, 4, chartDatae, labels);
                     })
                     .catch(e => {
                         console.log(e);
@@ -114,6 +120,11 @@ and open the template in the editor.
                         }, {
                             label: "Spring Client",
                             backgroundColor: 'rgb(153, 50, 204)',
+                            borderColor: 'rgb(0, 0, 0)',
+                            data: []
+                        }, {
+                            label: "Retrofit Client",
+                            backgroundColor: 'rgb(239, 163, 13)',
                             borderColor: 'rgb(0, 0, 0)',
                             data: []
                         }]
@@ -152,8 +163,6 @@ and open the template in the editor.
                 chart.data.datasets[index].data = data;
                 chart.update();
             }
-
-
         </script>
     </body>
 </html>
