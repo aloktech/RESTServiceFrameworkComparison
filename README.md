@@ -104,6 +104,7 @@ http://localhost:8090/UIChart/
 
 Deployment
 -----------
+build_deploy.sh to build and deploy all the projects
 
 - JerseyInPayara has to deployed in Payara
 - ResteasyInWildfly has to deployed in Wildfly
