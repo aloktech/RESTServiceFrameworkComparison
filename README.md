@@ -90,6 +90,7 @@ UI Bar Chart
 -------------
 UI bar chart are dynamic. It can adapt to any number of REST Server result.
 
+http://localhost:8090/UIChart/
 
 Deployment
 -----------
