@@ -7,29 +7,27 @@ package com.imos.rest;
 
 
 import com.imos.core.JSONResult;
-import java.time.LocalTime;
 import spark.Spark;
+
+import java.time.LocalTime;
+
 import static spark.Spark.get;
 
 /**
- *
  * @author pintu
  */
 public class SparkRESTService {
 
     public static void main(String[] args) {
 
-        get("/rest/spark", (req, res) -> {
-            String result = new JSONResult.JSONResultBuilder()
-                    .javaHome(System.getProperty("java.home"))
-                    .data("Hello World")
-                    .time(LocalTime.now().toString())
-                    .restService("Spark")
-                    .server("Jetty")
-                    .build()
-                    .stringify();
-            return result;
-        });
+        get("/rest/spark", (req, res) -> JSONResult.builder()
+                .javaHome(System.getProperty("java.home"))
+                .data("Hello World")
+                .time(LocalTime.now().toString())
+                .restService("Spark")
+                .server("Jetty")
+                .build()
+                .stringify());
         get("/proxy-hello", (req, res) -> "Hello World!(Proxy) : " + LocalTime.now());
         get("/test-hello", (req, res) -> "Hello World!(Test) : " + LocalTime.now());
 

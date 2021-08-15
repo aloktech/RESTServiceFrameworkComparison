@@ -10,7 +10,6 @@ import lombok.Builder;
 import org.json.JSONObject;
 
 /**
- *
  * @author p
  */
 @Builder
@@ -31,11 +30,5 @@ public class JSONResult {
         json.put("rest-service", restService);
         json.put("server", server);
         return json.toString(4);
-    }
-
-    public static class JSONResultBuilder {
-
-        public JSONResultBuilder() {
-        }
     }
 }

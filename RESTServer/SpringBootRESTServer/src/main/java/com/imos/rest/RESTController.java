@@ -7,12 +7,12 @@ package com.imos.rest;
 
 
 import com.imos.core.JSONResult;
-import java.time.LocalTime;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalTime;
+
 /**
- *
  * @author pintu
  */
 @RestController
@@ -20,7 +20,7 @@ public class RESTController {
 
     @RequestMapping("/rest/springboot")
     public String greeting() {
-        String result = new JSONResult.JSONResultBuilder()
+        return JSONResult.builder()
                 .javaHome(System.getProperty("java.home"))
                 .data("Hello World")
                 .time(LocalTime.now().toString())
@@ -28,6 +28,5 @@ public class RESTController {
                 .server("Tomcat")
                 .build()
                 .stringify();
-        return result;
     }
 }

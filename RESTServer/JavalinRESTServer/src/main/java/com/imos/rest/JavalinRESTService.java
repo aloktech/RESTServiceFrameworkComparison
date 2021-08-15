@@ -7,10 +7,10 @@ package com.imos.rest;
 
 import com.imos.core.JSONResult;
 import io.javalin.Javalin;
+
 import java.time.LocalTime;
 
 /**
- *
  * @author pintu
  */
 public class JavalinRESTService {
@@ -19,7 +19,7 @@ public class JavalinRESTService {
 
         Javalin app = Javalin.create().start(7000);
         app.get("/rest/javalin", ctx -> {
-            String result = new JSONResult.JSONResultBuilder()
+            String result = JSONResult.builder()
                     .javaHome(System.getProperty("java.home"))
                     .data("Hello World")
                     .time(LocalTime.now().toString())

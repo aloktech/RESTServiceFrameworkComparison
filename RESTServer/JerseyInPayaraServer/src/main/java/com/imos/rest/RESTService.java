@@ -6,12 +6,12 @@
 package com.imos.rest;
 
 import com.imos.core.JSONResult;
-import java.time.LocalTime;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import java.time.LocalTime;
 
 /**
- *
  * @author pintu
  */
 @Path("rest")
@@ -20,7 +20,7 @@ public class RESTService {
     @Path("jersey")
     @GET
     public String getData() {
-        String result = new JSONResult.JSONResultBuilder()
+        return JSONResult.builder()
                 .javaHome(System.getProperty("java.home"))
                 .data("Hello World")
                 .time(LocalTime.now().toString())
@@ -28,6 +28,5 @@ public class RESTService {
                 .server("Payara")
                 .build()
                 .stringify();
-        return result;
     }
 }

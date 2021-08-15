@@ -5,6 +5,7 @@ import com.imos.core.JSONResult;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -25,8 +26,8 @@ public class VertxRESTService extends AbstractVerticle {
                 .handler(cxt -> {
                     HttpServerResponse response = cxt.response();
                     response.putHeader("content-type", "application/json");
-                    
-                    String result = new JSONResult.JSONResultBuilder()
+
+                    String result = JSONResult.builder()
                             .javaHome(System.getProperty("java.home"))
                             .data("Hello World")
                             .time(LocalTime.now().toString())

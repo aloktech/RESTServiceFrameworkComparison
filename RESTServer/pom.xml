@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.imos</groupId>
@@ -16,13 +17,13 @@
         <module>SparkRESTServer</module>
         <module>JavalinRESTServer</module>
         <module>JoobyRESTServer</module>
-        <module>ProteusRESTServer</module>
         <module>HelidonRESTServer</module>
         <module>SpringBootRESTServer</module>
         <module>VertxRESTServer</module>
         <module>QuarkusRESTServer</module>
         <module>MicronautRESTServer</module>
-        <!--<module>PlayRESTServer</module>-->
+        <module>PlayRESTServer</module>
+        <!--        <module>ProteusRESTServer</module>-->
     </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -34,17 +35,17 @@
             <artifactId>RESTCore</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        
+
         <!-- Logging -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.11.0</version>
+            <version>2.14.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.11.0</version>
+            <version>2.14.1</version>
         </dependency>
     </dependencies>
 </project>

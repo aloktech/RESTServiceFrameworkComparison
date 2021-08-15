@@ -1,11 +1,11 @@
 package com.imos.rest;
 
 import com.imos.core.JSONResult;
-
 import io.helidon.webserver.Routing;
 import io.helidon.webserver.ServerRequest;
 import io.helidon.webserver.ServerResponse;
 import io.helidon.webserver.Service;
+
 import java.time.LocalTime;
 
 public class RESTController implements Service {
@@ -17,9 +17,9 @@ public class RESTController implements Service {
     }
 
     private void getDefaultMessage(final ServerRequest request,
-            final ServerResponse response) {
+                                   final ServerResponse response) {
 
-        String result = new JSONResult.JSONResultBuilder()
+        String result = JSONResult.builder()
                 .javaHome(System.getProperty("java.home"))
                 .data("Hello World")
                 .time(LocalTime.now().toString())

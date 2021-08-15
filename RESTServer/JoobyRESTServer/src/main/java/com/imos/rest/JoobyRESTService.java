@@ -6,27 +6,24 @@
 package com.imos.rest;
 
 import com.imos.core.JSONResult;
-import java.time.LocalTime;
 import org.jooby.Jooby;
 
+import java.time.LocalTime;
+
 /**
- *
  * @author pintu
  */
 public class JoobyRESTService extends Jooby {
 
     {
-        get("/rest/jooby", () -> {
-            String result = new JSONResult.JSONResultBuilder()
-                    .javaHome(System.getProperty("java.home"))
-                    .data("Hello World")
-                    .time(LocalTime.now().toString())
-                    .restService("Jooby")
-                    .server("Netty")
-                    .build()
-                    .stringify();
-            return result;
-        });
+        get("/rest/jooby", () -> JSONResult.builder()
+                .javaHome(System.getProperty("java.home"))
+                .data("Hello World")
+                .time(LocalTime.now().toString())
+                .restService("Jooby")
+                .server("Netty")
+                .build()
+                .stringify());
     }
 
     public static void main(String[] args) {
