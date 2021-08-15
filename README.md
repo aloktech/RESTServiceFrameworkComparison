@@ -1,15 +1,18 @@
 # Microservices/REST Service Frameworks Comparison
-For microservices, we need Microservice Framework/REST services. But how to know, what to select.
-So, we may have to compare Microservice Framework results and see which one performs better.
 
-The Framework that are used for server side REST services are Jersey and RestEasy. 
-And the standalone REST Framework services are Spring Boot, Spark Java, Javalin, Jooby, Helidon, Quarkus and Micronaut. 
-For the client side REST services, the Frameworks that I have used are Jersey Client, OkHTTP, Unirest, and Spring.
+For microservices, we need Microservice Framework/REST services. But how to know, what to select. So, we may have to
+compare Microservice Framework results and see which one performs better.
+
+The Framework that are used for server side REST services are Jersey and RestEasy. And the standalone REST Framework
+services are Spring Boot, Spark Java, Javalin, Jooby, Helidon, Quarkus and Micronaut. For the client side REST services,
+the Frameworks that I have used are Jersey Client, OkHTTP, Unirest, and Spring.
 
 **Service Provider**
+
 - ClientServiceProvider
 
 **REST Client**
+
 - OKHttpClient
 - UniRESTClient
 - JerseyRESTClient
@@ -17,6 +20,7 @@ For the client side REST services, the Frameworks that I have used are Jersey Cl
 - RetrofitClient
 
 **REST Server**
+
 - SparkRESTServer
 - JavalinRESTServer
 - SpringBootRESTServer
@@ -31,41 +35,47 @@ For the client side REST services, the Frameworks that I have used are Jersey Cl
 - NodeJSRESTServer
 
 **REST Controller for UI**
+
 - RESTServiceForUI
 
 **UI**
-- UIChart
 
+- UIChart
 
 Any number REST Client service can be integrated by implementing the Service Provider Interface(SPI).
 
 SPI(Service Provider Interface) for REST Client :
 ---------------------
+
 ```java
-public interface ClientServiceProvider {    
+public interface ClientServiceProvider {
     void config();
+
     void close();
+
     String execute(String url) throws Exception;
+
     String getClientServiceName();
 }
 ```
 
-The file `META-INF/services/com.imos.ClientServiceProvider` must be added and edited 
-as follows :
+The file `META-INF/services/com.imos.HttpClientServiceProvider` must be added and edited as follows :
 
-<full class name, which has implement the interface> i.e com.imos.JerseyClient(JerseyClient implement the interface ClientServiceProvider)
+<full class name, which has implement the interface> i.e com.imos.JerseyHttpClient(JerseyClient implement the interface
+ClientServiceProvider)
+
 - The above configuration can be automated by using Google Auto Value
 
 REST Signature for REST Server adding/removing
 -------
-Any number of REST Server can be added/removed
-The REST end point are follow :
+Any number of REST Server can be added/removed The REST end point are follow :
 
 **POST** **:** RESTServiceForUI/rest/regis
 
 **DELETE** **:** RESTServiceForUI/rest/deregis
 
 The signature for POST and DELETE :
+
 ```json
 {
     "services": [{
@@ -94,6 +104,7 @@ http://localhost:8090/UIChart/
 
 Deployment
 -----------
+
 - JerseyInPayara has to deployed in Payara
 - ResteasyInWildfly has to deployed in Wildfly
 - JerseyInTomcatServer has to deployed in Tomcat
@@ -103,4 +114,5 @@ Deployment
 
 The complete build and deployment are automated by using docker and script files.
 ![Framework Comparison](docs/figure.png)<br/>
-With reference to DZone article **Choosing a REST Framework for Microservices**(https://dzone.com/articles/choosing-rest-framework-for-microservices)
+With reference to DZone article **Choosing a REST Framework for
+Microservices**(https://dzone.com/articles/choosing-rest-framework-for-microservices)
