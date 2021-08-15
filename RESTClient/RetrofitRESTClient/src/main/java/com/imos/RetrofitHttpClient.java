@@ -1,19 +1,21 @@
 package com.imos;
 
 import com.google.auto.service.AutoService;
-import java.io.IOException;
+import lombok.extern.log4j.Log4j2;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.io.IOException;
+
 /**
- *
  * @author p
  */
-@AutoService(ClientServiceProvider.class)
-public class RetrofitClient implements ClientServiceProvider {
+@Log4j2
+@AutoService(HttpClientServiceProvider.class)
+public class RetrofitHttpClient implements HttpClientServiceProvider {
 
     Retrofit.Builder retrofitBuilder;
     Retrofit retrofit;
@@ -26,7 +28,7 @@ public class RetrofitClient implements ClientServiceProvider {
     }
 
     @Override
-    public String execute(String url) throws Exception {
+    public String execute(String url) {
         String data = "{}";
         try {
             if (retrofit == null) {
@@ -49,6 +51,7 @@ public class RetrofitClient implements ClientServiceProvider {
                 data = body.string();
             }
         } catch (IOException e) {
+            log.error(e.getMessage());
         }
         return data;
     }

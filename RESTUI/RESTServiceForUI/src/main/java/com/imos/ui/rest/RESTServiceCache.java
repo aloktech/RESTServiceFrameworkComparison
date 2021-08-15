@@ -5,16 +5,16 @@
  */
 package com.imos.ui.rest;
 
-import com.imos.ClientService;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import com.imos.HttpClientService;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
- *
  * @author pintu
  */
 public enum RESTServiceCache implements Serializable {
@@ -27,14 +27,14 @@ public enum RESTServiceCache implements Serializable {
     private final Set<ServiceInfo> SERVICES = new HashSet<>();
 
     @Getter
-    private final ClientService service = ClientService.INSTANCE;
+    private final HttpClientService service = HttpClientService.INSTANCE;
 
     public void loadServices() {
         try {
             LOG.info("begin to service configure");
             service.loadServices(RESTServiceCache.class.getClassLoader());
             LOG.info("Services configured");
-            LOG.info("Services availble: {}", ClientService.INSTANCE.getSize());
+            LOG.info("Services availble: {}", HttpClientService.INSTANCE.getSize());
         } catch (Exception e) {
             e.printStackTrace();
         }

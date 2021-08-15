@@ -6,6 +6,8 @@
 package com.imos;
 
 import com.google.auto.service.AutoService;
+import lombok.extern.log4j.Log4j2;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -13,11 +15,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- *
  * @author pintu
  */
-@AutoService(ClientServiceProvider.class)
-public class JerseyClient implements ClientServiceProvider {
+@Log4j2
+@AutoService(HttpClientServiceProvider.class)
+public class JerseyHttpClient implements HttpClientServiceProvider {
 
     private Client jerseyClient;
 
@@ -27,13 +29,14 @@ public class JerseyClient implements ClientServiceProvider {
     }
 
     @Override
-    public String execute(String url) throws Exception {
-        String data = "{}";
+    public String execute(String url) {
+        String data;
         try {
             WebTarget target = jerseyClient.target(url);
             Response response = target.request(MediaType.APPLICATION_JSON).get();
             data = response.readEntity(String.class);
         } catch (Exception e) {
+            log.error(e.getMessage());
             throw e;
         }
         return data;

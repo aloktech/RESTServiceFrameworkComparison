@@ -9,11 +9,10 @@ import com.google.auto.service.AutoService;
 import org.springframework.web.client.RestTemplate;
 
 /**
- *
  * @author pintu
  */
-@AutoService(ClientServiceProvider.class)
-public class SpringRESTClient implements ClientServiceProvider {
+@AutoService(HttpClientServiceProvider.class)
+public class SpringRESTHttpClient implements HttpClientServiceProvider {
 
     private RestTemplate restTemplate;
 
@@ -23,7 +22,7 @@ public class SpringRESTClient implements ClientServiceProvider {
     }
 
     @Override
-    public String execute(String url) throws Exception {
+    public String execute(String url) {
         return restTemplate.getForObject(url, String.class);
     }
 

@@ -5,24 +5,23 @@
  */
 package com.imos;
 
-import java.util.Iterator;
-import java.util.ServiceLoader;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ServiceLoader;
+
 /**
- *
  * @author pintu
  */
-public enum ClientService {
+public enum HttpClientService {
 
     INSTANCE;
 
-    private static final Logger LOG = LogManager.getLogger(ClientService.class);
+    private static final Logger LOG = LogManager.getLogger(HttpClientService.class);
 
     @Getter
-    private ServiceLoader<ClientServiceProvider> loader;
+    private ServiceLoader<HttpClientServiceProvider> loader;
 
     @Getter
     private int size;
@@ -30,17 +29,15 @@ public enum ClientService {
     public void loadServices(ClassLoader classLoader) {
         try {
             LOG.info("start");
-            loader = ServiceLoader.load(ClientServiceProvider.class, classLoader);
+            loader = ServiceLoader.load(HttpClientServiceProvider.class, classLoader);
             LOG.info("loaded");
             int counter = 0;
-            Iterator<ClientServiceProvider> itr = loader.iterator();
-            while (itr.hasNext()) {
+            for (HttpClientServiceProvider httpClientServiceProvider : loader) {
                 counter++;
-                itr.next();
             }
             size = counter;
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
         }
     }
 }

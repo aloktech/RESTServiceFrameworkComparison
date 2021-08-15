@@ -6,16 +6,15 @@
 package com.imos;
 
 /**
- *
  * @author pintu
  */
-public interface ClientServiceProvider {
-    
+public interface HttpClientServiceProvider {
+
     void config();
-    
+
     void close();
-    
+
     String execute(String url) throws Exception;
-    
+
     String getClientServiceName();
 }

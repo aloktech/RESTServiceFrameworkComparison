@@ -6,13 +6,7 @@
 package com.imos.ui.rest;
 
 import com.alibaba.fastjson.JSON;
-import com.imos.ClientServiceProvider;
-import java.io.Serializable;
-import java.time.LocalTime;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import com.imos.HttpClientServiceProvider;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,18 +15,22 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+import java.time.LocalTime;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /**
- *
  * @author pintu
  */
 @Log4j2
 public class RESTService implements Serializable {
 
     private static final Logger LOG = LogManager.getLogger(RESTService.class);
-
-    private JSONArray data = new JSONArray();
-
     private final RESTServiceCache cache = RESTServiceCache.INSTANCE;
+    private JSONArray data = new JSONArray();
 
     public RESTService() {
         LOG.info("Services to load");
@@ -43,9 +41,7 @@ public class RESTService implements Serializable {
     public JSONArray getAllServices() throws JSONException {
         JSONArray array = new JSONArray();
         cache.getAllActiveServices()
-                .forEach(s -> {
-                    generateService(s, array);
-                });
+                .forEach(s -> generateService(s, array));
         log.info("Request for AllServices");
         return array;
     }
@@ -60,9 +56,7 @@ public class RESTService implements Serializable {
     public JSONObject registration(String data) throws JSONException {
         JSONObject json = new JSONObject(data);
         JSONArray array = json.getJSONArray("services");
-        array.forEach(s -> {
-            addService(s);
-        });
+        array.forEach(s -> addService(s));
         json = new JSONObject(data);
         json.put("msg", array.length() + " services are added");
         return json;
@@ -80,9 +74,7 @@ public class RESTService implements Serializable {
     public JSONObject deregistration(String data1) throws JSONException {
         JSONObject json = new JSONObject(data1);
         JSONArray array = json.getJSONArray("services");
-        array.forEach(s -> {
-            cache.removeService(JSON.parseObject(s.toString(), ServiceInfo.class));
-        });
+        array.forEach(s -> cache.removeService(JSON.parseObject(s.toString(), ServiceInfo.class)));
         json = new JSONObject(data1);
         json.put("msg", array.length() + " services are removed");
         return json;
@@ -92,10 +84,7 @@ public class RESTService implements Serializable {
 
         data = new JSONArray();
         cache.getAllActiveServices()
-                .stream()
-                .forEach(s -> {
-                    execute(iteration, s);
-                });
+                .forEach(s -> execute(iteration, s));
         JSONObject json = new JSONObject();
         json.put("time", LocalTime.now().toString());
         json.put("result", data.toString());
@@ -108,10 +97,7 @@ public class RESTService implements Serializable {
         data = new JSONArray();
         log.info("Request to collect all data");
         cache.getAllActiveServices()
-                .stream()
-                .forEach(s -> {
-                    execute(1000, s);
-                });
+                .forEach(s -> execute(1000, s));
 
         JSONObject json = new JSONObject();
         json.put("time", LocalTime.now().toString());
@@ -124,18 +110,16 @@ public class RESTService implements Serializable {
         log.info("execute for service {}", info.getRestServiceName());
         cache.getService()
                 .getLoader()
-                .forEach(s -> {
-                    executeGetRequest(info, s, iteration);
-                });
+                .forEach(s -> executeGetRequest(info, s, iteration));
     }
 
-    private void executeGetRequest(ServiceInfo info, ClientServiceProvider service, int iteration) {
+    private void executeGetRequest(ServiceInfo info, HttpClientServiceProvider service, int iteration) {
         String url = info.getBaseURL();
         try {
             service.config();
             String strData = service.execute(url);
             checkDataValidity(strData);
-            data = timeDiff(data, info.getServerName(), service.getClientServiceName(), info.getRestServiceName(),
+            timeDiff(data, info.getServerName(), service.getClientServiceName(), info.getRestServiceName(),
                     url, Unchecked.function(u -> service.execute(u)), iteration);
         } catch (Exception e) {
             log.error("On Service {}, By Client {}, Failed for url : '{}' caused by {}", info.getRestServiceName(), service.getClientServiceName(), url, e.getMessage());
@@ -148,9 +132,7 @@ public class RESTService implements Serializable {
         try {
             log.info(data);
             JSONObject json = new JSONObject(data);
-            if (json.keySet().isEmpty()) {
-                throw new IllegalStateException("Empty JSON data: ");
-            }
+            if (json.keySet().isEmpty()) throw new IllegalStateException("Empty JSON data: ");
         } catch (JSONException e) {
             throw new IllegalStateException("Invalid data : " + e.getMessage());
         }
@@ -192,7 +174,7 @@ public class RESTService implements Serializable {
             }
             JSONObject error = new JSONObject();
             error.put("errors", errorArray);
-            data.put(error);
+            Objects.requireNonNull(data).put(error);
         }
         return data;
     }

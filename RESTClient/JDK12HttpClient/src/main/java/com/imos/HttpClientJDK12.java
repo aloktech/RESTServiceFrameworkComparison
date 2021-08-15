@@ -1,17 +1,17 @@
 package com.imos;
 
 import com.google.auto.service.AutoService;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 /**
- *
  * @author alok.meher
  */
-@AutoService(ClientServiceProvider.class)
-public class HttpClientJDK11 implements ClientServiceProvider {
+@AutoService(HttpClientServiceProvider.class)
+public class HttpClientJDK12 implements HttpClientServiceProvider {
 
     private HttpClient httpClient;
 
@@ -35,7 +35,7 @@ public class HttpClientJDK11 implements ClientServiceProvider {
 
     @Override
     public String getClientServiceName() {
-        return "HttpClient_JDK11";
+        return "HttpClient_JDK12";
     }
 
     @Override

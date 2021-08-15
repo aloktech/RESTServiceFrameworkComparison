@@ -6,17 +6,18 @@
 package com.imos;
 
 import com.google.auto.service.AutoService;
+import lombok.extern.log4j.Log4j2;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- *
  * @author pintu
  */
-@AutoService(ClientServiceProvider.class)
-public class OKHttpClient implements ClientServiceProvider {
+@Log4j2
+@AutoService(HttpClientServiceProvider.class)
+public class OKHttpHttpClient implements HttpClientServiceProvider {
 
     private OkHttpClient client = new OkHttpClient();
 
@@ -32,13 +33,14 @@ public class OKHttpClient implements ClientServiceProvider {
                 .build();
 
         Response res;
-        ResponseBody body = null;
+        ResponseBody body;
         String data = "{}";
         try {
             res = client.newCall(req).execute();
             body = res.body();
             data = body == null ? data : body.string();
         } catch (Exception ex) {
+            log.error(ex.getMessage());
             throw ex;
         }
         return (body == null || data == null) ? "{}" : data;

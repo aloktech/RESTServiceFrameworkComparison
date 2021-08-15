@@ -7,21 +7,23 @@ package com.imos;
 
 import com.google.auto.service.AutoService;
 import com.mashape.unirest.http.Unirest;
+import lombok.extern.log4j.Log4j2;
 
 /**
- *
  * @author pintu
  */
-@AutoService(ClientServiceProvider.class)
-public class UnirestClient implements ClientServiceProvider {
+@Log4j2
+@AutoService(HttpClientServiceProvider.class)
+public class UnirestHttpClient implements HttpClientServiceProvider {
 
     @Override
     public String execute(String url) throws Exception {
-        String data = "{}";
+        String data;
         try {
             data = Unirest.get(url)
                     .asString().getBody();
         } catch (Exception ex) {
+            log.error(ex.getMessage());
             throw ex;
         }
         return data;
